@@ -112,6 +112,55 @@ h1 {
   margin: 0 0 12px;
 }
 
+.scores {
+  padding: 10px 12px;
+  border-bottom: 1px solid #2a2f36;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.scores-title {
+  color: #9aa4ad;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.scores-empty { color: #6b7280; }
+.score-row {
+  background: #0f1216;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+.score-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.score-label { color: #6da5ff; font-weight: 600; }
+.score-conf  { color: #d1d5db; }
+.score-bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  height: 40px;
+  align-items: end;
+}
+.score-bar {
+  background: #1a1f26;
+  border-radius: 2px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.score-fill {
+  background: linear-gradient(180deg, #6da5ff, #2d6cdf);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
 @media (max-width: 800px) {
   .app { grid-template-columns: 1fr; }
 }

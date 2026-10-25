@@ -20,7 +20,7 @@ import aiohttp_cors
 from aiohttp import web
 
 from sfu import Sfu
-from model_interface import get_model
+from model_interface import PeerScore, get_model
 
 logging.basicConfig(
     level=logging.INFO,
@@ -83,6 +83,11 @@ class SignalingBridge:
             return
         await self._ws.send_json({"type": "to", "to": peer_id, "payload": payload})
 
+    async def broadcast(self, payload: dict[str, Any]) -> None:
+        if not self._ws:
+            return
+        await self._ws.send_json({"type": "broadcast", "payload": payload})
+
     async def stop(self) -> None:
         if self._task:
             self._task.cancel()
@@ -95,7 +100,26 @@ def create_app() -> web.Application:
 
     bridge = SignalingBridge(SIGNALING_WS)
     sfu = Sfu(notify_peer=bridge.send_to)
-    model = get_model()
+
+    loop_holder: dict[str, asyncio.AbstractEventLoop] = {}
+
+    def on_score(score: PeerScore) -> None:
+        # Called from a worker thread. Schedule the broadcast on the aiohttp loop.
+        loop = loop_holder.get("loop")
+        if not loop:
+            return
+        asyncio.run_coroutine_threadsafe(
+            bridge.broadcast({
+                "kind": "score",
+                "peer": score.peer_id,
+                "label": score.top_label,
+                "confidence": score.top_confidence,
+                "probs": score.probs,
+            }),
+            loop,
+        )
+
+    model = get_model(on_score=on_score)
 
     async def on_signal_message(data: dict[str, Any]) -> None:
         # Node forwards chat as {type: "chat", from, text, room}
@@ -124,6 +148,7 @@ def create_app() -> web.Application:
         return web.json_response({"ok": True})
 
     async def on_startup(_: web.Application) -> None:
+        loop_holder["loop"] = asyncio.get_running_loop()
         await bridge.start()
 
     async def on_cleanup(_: web.Application) -> None:

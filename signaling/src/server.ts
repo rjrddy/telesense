@@ -98,6 +98,14 @@ wss.on("connection", (ws: WebSocket, ctx: { peerId: PeerId; roomId: RoomId }) =>
         safeSend(target.ws, { type: "from", from: peerId, payload: msg.payload });
         break;
       }
+      case "broadcast": {
+        // Fan out to every human peer in the room (skip sfu-server + sender).
+        for (const c of room.values()) {
+          if (c.peerId === peerId || c.peerId === "sfu-server") continue;
+          safeSend(c.ws, { type: "from", from: peerId, payload: msg.payload });
+        }
+        break;
+      }
       default:
         // ignore unknowns; keeps forward-compat cheap
         break;
