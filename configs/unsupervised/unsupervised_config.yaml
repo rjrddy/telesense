@@ -1,0 +1,109 @@
+# Unsupervised Temporal Localization Configuration
+model:
+  name: "UnsupervisedTemporalModel"
+  
+  # Audio Encoder
+  audio:
+    encoder: "wav2vec2"
+    model_name: "facebook/wav2vec2-base"
+    hidden_size: 768
+    dropout: 0.1
+    
+  # Visual Encoder
+  visual:
+    encoder: "resnet50"
+    pretrained: true
+    hidden_size: 2048
+    dropout: 0.1
+    
+  # Text Encoder
+  text:
+    encoder: "distilbert"
+    model_name: "distilbert-base-uncased"
+    hidden_size: 768
+    max_length: 512
+    dropout: 0.1
+    
+  # Unsupervised Components
+  unsupervised:
+    feature_dim: 512  # Dimension for each modality
+    hidden_dim: 512
+    projection_dim: 128  # For contrastive learning
+    latent_dim: 128  # VAE latent dimension
+    encoder_hidden_dims: [256, 512]
+    decoder_hidden_dims: [512, 256]
+    num_temporal_layers: 3
+    dropout: 0.1
+    temperature: 0.07  # Contrastive learning temperature
+
+# Training Configuration
+training:
+  # Contrastive pre-training
+  contrastive_epochs: 10
+  
+  # VAE training
+  vae_epochs: 50
+  batch_size: 4
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  gradient_accumulation_steps: 4
+  max_grad_norm: 1.0
+  
+  # Loss weights
+  reconstruction_weight: 1.0
+  kl_weight: 0.01  # KL divergence weight
+  
+  # Optimizer
+  optimizer: "adamw"
+  scheduler: "cosine"
+  
+  # Checkpointing
+  save_dir: "checkpoints_unsupervised"
+  save_every: 5
+  eval_every: 1
+
+# Data Configuration
+data:
+  datasets:
+    - "cmu_mosei"
+    - "crema_d"
+    - "meld"
+    - "mer2024"
+    
+  train_split: 0.9  # Use more data for unsupervised (no validation labels needed)
+  val_split: 0.1
+  
+  # Preprocessing
+  audio:
+    sample_rate: 16000
+    max_length: 60  # seconds
+    normalize: true
+    
+  video:
+    fps: 30
+    frame_size: 224
+    max_frames: 1800  # 60 seconds at 30fps
+    face_detection: true
+    
+  text:
+    max_length: 512
+    lowercase: true
+
+# Device Configuration
+device:
+  type: "mps"
+  mixed_precision: false  # VAE training may be more stable without mixed precision
+
+# Inference Configuration
+inference:
+  threshold_percentile: 95  # Use 95th percentile as anomaly threshold
+  min_segment_duration: 30  # Minimum segment duration in frames
+  smoothing_window: 5  # Temporal smoothing window
+
+# Logging
+logging:
+  use_wandb: false
+  use_tensorboard: true
+  log_dir: "logs_unsupervised"
+  log_every: 100
+

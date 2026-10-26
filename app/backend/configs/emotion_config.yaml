@@ -1,0 +1,82 @@
+# Emotion Detection Configuration
+
+# Audio Emotion Detection
+audio:
+  model_name: "superb/wav2vec2-base-superb-er"
+  window_size: 3.0  # seconds - size of sliding window
+  hop_size: 0.5     # seconds - hop size between windows
+  smoothing:
+    method: "moving_average"  # or "ema"
+    window_size: 2.0  # seconds
+
+# Text Emotion Detection
+text:
+  model_name: "SamLowe/roberta-base-go_emotions"
+  threshold: 0.4  # Probability threshold for including emotions - increased to reduce false positives
+  return_all: false  # If true, return all emotions above threshold
+  min_confidence: 0.5  # Minimum confidence for flagging based on text emotions
+
+# Video Emotion Detection
+video:
+  model_name: "VGG-Face"  # DeepFace model
+  backend: "opencv"  # Face detection backend: opencv, ssd, dlib, mtcnn, retinaface
+  sample_rate: 1.0  # Frames per second to analyze (1.0 = 1 fps)
+  smoothing:
+    method: "moving_average"  # or "ema"
+    window_size: 2.0  # seconds
+
+# Voice Activity Detection
+vad:
+  model_name: "pyannote/voice-activity-detection"
+  use_auth_token: null  # Set to Hugging Face token if required
+  gap_threshold: 0.5  # seconds - merge segments closer than this
+
+# Temporal Fusion
+fusion:
+  weights:
+    audio: 0.4
+    text: 0.4
+    video: 0.2
+  time_resolution: 0.1  # seconds - resolution for fused scores (100ms)
+  smoothing:
+    method: "moving_average"  # or "ema", "gaussian"
+    window_size: 2.0  # seconds
+
+# Flag Generation
+flagging:
+  concern_threshold: 0.7  # Score threshold for flagging (0-1) - increased to reduce false positives
+  min_duration: 2.0  # seconds - minimum duration for a flag
+  severity_thresholds:
+    high: 0.8
+    medium: 0.65  # Increased from 0.6
+    low: 0.5  # Increased from 0.4
+  keyword_detection:
+    enabled: true
+    min_confidence: 0.5  # Minimum confidence for keyword-based flags
+
+# Emotion to Concern Mapping
+emotion_mapping:
+  high_concern:
+    - "sad"
+    - "sadness"
+    - "grief"
+    - "angry"
+    - "anger"
+    - "fear"
+    - "fearful"
+    - "disgust"
+    - "disgusted"
+  medium_concern:
+    - "confusion"
+    - "embarrassment"
+    - "nervousness"
+  low_concern:
+    - "neutral"
+    - "happy"
+    - "joy"
+    - "surprise"
+
+# Device Configuration
+device:
+  auto_detect: true  # Auto-detect best device (cuda/mps/cpu)
+  preferred: null  # Override: "cuda", "mps", or "cpu"

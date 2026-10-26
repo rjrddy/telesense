@@ -1,0 +1,164 @@
+.text-flag-monitor {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-flag-monitor h3 {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  font-size: 1.2rem;
+}
+
+.transcript-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.transcript-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transcript-container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 4px;
+}
+
+.transcript-container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.transcript-container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.no-transcript {
+  text-align: center;
+  color: #94a3b8;
+  padding: 2rem;
+}
+
+.transcript-segment {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  border-left: 4px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8f9fa;
+}
+
+.transcript-segment:hover {
+  background: #f1f5f9;
+  transform: translateX(4px);
+}
+
+.transcript-segment.current {
+  background: #eff6ff;
+  border-left-color: #3b82f6;
+}
+
+.transcript-segment.has-flags {
+  border-left-width: 6px;
+}
+
+.transcript-segment.has-flags.high {
+  border-left-color: #ef4444;
+  background: #fef2f2;
+}
+
+.transcript-segment.has-flags.medium {
+  border-left-color: #f59e0b; /* High Concern: orange */
+  background: #fffbeb; /* Light orange background */
+}
+
+.transcript-segment.has-flags.low {
+  border-left-color: #fbbf24; /* Concern: yellow */
+  background: #fefce8; /* Light yellow background */
+}
+
+.transcript-segment.has-flags.emotional-concern {
+  border-left-color: #fbbf24 !important; /* Emotional Concern: always yellow */
+  background: #fefce8 !important; /* Light yellow background */
+}
+
+
+.transcript-segment.current.has-flags {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.segment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.segment-time {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.segment-flags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.flag-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+}
+
+.flag-badge.high {
+  background: #ef4444; /* High Risk: red */
+}
+
+.flag-badge.medium {
+  background: #f59e0b; /* High Concern: orange */
+}
+
+.flag-badge.low {
+  background: #fbbf24; /* Concern: yellow */
+}
+
+.flag-badge.emotional-concern {
+  background: #fbbf24 !important; /* Emotional Concern: always yellow */
+}
+
+
+
+.segment-text {
+  color: #1e293b;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.word {
+  transition: background 0.2s;
+}
+
+.word.flagged {
+  background: #fef3c7;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: help;
+  transition: background 0.2s;
+}
+
+.word.flagged:hover {
+  background: #fde68a;
+}

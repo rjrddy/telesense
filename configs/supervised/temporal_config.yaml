@@ -1,0 +1,119 @@
+# Temporal Localization Model Configuration
+model:
+  name: "TemporalMultimodalBehavioralModel"
+  
+  # Audio Encoder
+  audio:
+    encoder: "wav2vec2"
+    model_name: "facebook/wav2vec2-base"
+    hidden_size: 768
+    num_temporal_layers: 0  # Using multi-scale encoder instead
+    dropout: 0.1
+    
+  # Visual Encoder
+  visual:
+    encoder: "resnet50"  # or "densenet121"
+    pretrained: true
+    hidden_size: 2048  # ResNet-50: 2048, DenseNet-121: 1024
+    num_temporal_layers: 0  # Using multi-scale encoder instead
+    dropout: 0.1
+    
+  # Text Encoder
+  text:
+    encoder: "distilbert"
+    model_name: "distilbert-base-uncased"
+    hidden_size: 768
+    max_length: 512
+    dropout: 0.1
+    
+  # Temporal Encoder (Multi-scale)
+  temporal:
+    hidden_dim: 512
+    short_term_dim: 512
+    medium_term_dim: 512
+    long_term_dim: 512
+    num_concern_types: 7  # Number of behavioral concern types
+    use_attention: true
+    use_smoothing: true
+    smoothing_window: 5
+    dropout: 0.1
+
+# Training Configuration
+training:
+  batch_size: 4  # Smaller batch for temporal models
+  num_epochs: 50
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  warmup_steps: 1000
+  gradient_accumulation_steps: 4
+  max_grad_norm: 1.0
+  mixed_precision: true
+  
+  # Loss configuration for temporal localization
+  loss:
+    type: "focal"  # focal, bce, or combined
+    focal_alpha: 0.25
+    focal_gamma: 2.0
+    class_weights: null  # Optional: [w1, w2, ...] for class balancing
+    
+  # Optimizer
+  optimizer: "adamw"
+  scheduler: "cosine"
+  
+  # Checkpointing
+  save_dir: "checkpoints"
+  save_every: 5
+  eval_every: 1
+
+# Data Configuration
+data:
+  datasets:
+    - "cmu_mosei"
+    - "crema_d"
+    - "meld"
+    - "mer2024"
+    
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  
+  # Preprocessing
+  audio:
+    sample_rate: 16000
+    max_length: 60  # seconds (longer for temporal analysis)
+    normalize: true
+    
+  video:
+    fps: 30
+    frame_size: 224
+    max_frames: 1800  # 60 seconds at 30fps
+    face_detection: true
+    
+  text:
+    max_length: 512
+    lowercase: true
+  
+  # Temporal annotation format
+  temporal_annotations: true  # Enable frame-level annotations
+  annotation_format: "segments"  # "segments" or "frames"
+  # segments: [(start_frame, end_frame, concern_type), ...]
+  # frames: [concern_type_per_frame, ...]
+
+# Device Configuration
+device:
+  type: "mps"  # mps for M2 Pro, cuda for NVIDIA, cpu for CPU
+  mixed_precision: true
+
+# Logging
+logging:
+  use_wandb: false
+  use_tensorboard: true
+  log_dir: "logs"
+  log_every: 100
+
+# Inference Configuration
+inference:
+  threshold: 0.5  # Threshold for concern detection
+  min_duration: 30  # Minimum segment duration in frames (1 second at 30fps)
+  nms_threshold: 0.3  # Non-maximum suppression for overlapping segments
+

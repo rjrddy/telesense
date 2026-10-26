@@ -1,0 +1,22 @@
+.visual-flag-monitor {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.visual-flag-monitor h3 {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  font-size: 1.2rem;
+}
+
+.timeline-svg-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.timeline-svg-container svg {
+  display: block;
+  width: 100%;
+}

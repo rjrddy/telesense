@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "telesense"
+version = "0.1.0"
+description = "Prototype multimodal (audio, video, text) behavioral analysis for telehealth sessions"
+readme = "README.md"
+requires-python = ">=3.10"
+# Runtime dependencies live in requirements.txt (dlib and the torch stack are easier
+# to install through conda first); `pip install -e .` only makes `telesense_ml` importable.
+
+[tool.setuptools.packages.find]
+where = ["src"]

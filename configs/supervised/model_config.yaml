@@ -1,0 +1,107 @@
+# Model Configuration
+model:
+  name: "MultimodalBehavioralModel"
+  
+  # Audio Encoder
+  audio:
+    encoder: "wav2vec2"
+    model_name: "facebook/wav2vec2-base"
+    hidden_size: 768
+    num_temporal_layers: 2
+    dropout: 0.1
+    
+  # Visual Encoder
+  visual:
+    encoder: "resnet50"  # or "densenet121"
+    pretrained: true
+    hidden_size: 2048  # ResNet-50: 2048, DenseNet-121: 1024
+    num_temporal_layers: 2
+    dropout: 0.1
+    
+  # Text Encoder
+  text:
+    encoder: "distilbert"
+    model_name: "distilbert-base-uncased"
+    hidden_size: 768
+    max_length: 512
+    dropout: 0.1
+    
+  # Fusion
+  fusion:
+    type: "cross_modal_attention"
+    num_heads: 8
+    num_layers: 2
+    hidden_size: 768
+    dropout: 0.1
+    
+  # Classification Head
+  classifier:
+    num_classes: 7  # Adjust based on dataset
+    hidden_dims: [512, 256]
+    dropout: 0.2
+
+# Training Configuration
+training:
+  batch_size: 8
+  num_epochs: 50
+  learning_rate: 1e-4
+  weight_decay: 1e-5
+  warmup_steps: 1000
+  gradient_accumulation_steps: 4
+  max_grad_norm: 1.0
+  mixed_precision: true
+  
+  # Loss weights
+  loss_weights:
+    classification: 1.0
+    regression: 0.5
+    
+  # Optimizer
+  optimizer: "adamw"
+  scheduler: "cosine"
+  
+  # Checkpointing
+  save_dir: "checkpoints"
+  save_every: 5
+  eval_every: 1
+
+# Data Configuration
+data:
+  datasets:
+    - "cmu_mosei"
+    - "crema_d"
+    - "meld"
+    - "mer2024"
+    
+  train_split: 0.8
+  val_split: 0.1
+  test_split: 0.1
+  
+  # Preprocessing
+  audio:
+    sample_rate: 16000
+    max_length: 10  # seconds
+    normalize: true
+    
+  video:
+    fps: 30
+    frame_size: 224
+    max_frames: 300
+    face_detection: true
+    
+  text:
+    max_length: 512
+    lowercase: true
+
+# Device Configuration
+device:
+  type: "mps"  # mps for M2 Pro, cuda for NVIDIA, cpu for CPU
+  mixed_precision: true
+
+# Logging
+logging:
+  use_wandb: false
+  use_tensorboard: true
+  log_dir: "logs"
+  log_every: 100
+

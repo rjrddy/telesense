@@ -1,0 +1,228 @@
+.summary-dashboard {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.summary-dashboard h3 {
+  margin: 0 0 1.5rem 0;
+  color: #1e293b;
+  font-size: 1.2rem;
+}
+
+.summary-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  color: white;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.summary-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.chart-container {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.chart-container h4 {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  font-size: 1rem;
+}
+
+.summary-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.summary-tabs button {
+  background: none;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+
+.summary-tabs button:hover {
+  color: #1e293b;
+}
+
+.summary-tabs button.active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+.evaluation-details {
+  margin-top: 1rem;
+}
+
+.evaluation-details h4 {
+  margin: 0 0 1rem 0;
+  color: #1e293b;
+  font-size: 1.1rem;
+}
+
+.evaluation-section {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.evaluation-section h5 {
+  margin: 0 0 0.5rem 0;
+  color: #1e293b;
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+.evaluation-method {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.evaluation-notes {
+  margin-bottom: 1rem;
+}
+
+.evaluation-notes strong {
+  color: #1e293b;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.evaluation-notes ul {
+  margin: 0;
+  padding-left: 1.5rem;
+  color: #4b5563;
+}
+
+.evaluation-notes li {
+  margin-bottom: 0.25rem;
+}
+
+.evaluation-flags {
+  margin-top: 1rem;
+}
+
+.evaluation-flags strong {
+  color: #1e293b;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.flags-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.evaluation-flag {
+  background: white;
+  border-left: 3px solid #3b82f6;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.flag-time {
+  font-weight: 600;
+  color: #1e293b;
+  margin-right: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.flag-level {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+.flag-level.high-risk {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.flag-level.high-concern {
+  background: #fed7aa;
+  color: #92400e;
+}
+
+.flag-level.concern {
+  background: #fef3c7;
+  color: #78350f;
+}
+
+.flag-category {
+  color: #4b5563;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.flag-quote {
+  margin: 0.5rem 0 0 0;
+  color: #1e293b;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.flag-rationale {
+  margin: 0.5rem 0 0 0;
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .summary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .summary-charts {
+    grid-template-columns: 1fr;
+  }
+}
+
+.engine-label {
+  margin: -4px 0 12px;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.engine-note {
+  color: #9ca3af;
+}
