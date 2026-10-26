@@ -59,8 +59,8 @@ The dashboard shows which engine produced the results. In both cases, protective
 | Tool | Version | Notes |
 |---|---|---|
 | macOS or Linux | | Developed on macOS (Apple Silicon). Windows is untested. |
-| Conda (Miniforge recommended) | | Manages the Python environment |
-| Python | 3.10 or newer | Developed and tested on 3.14 |
+| venv or Conda | | Manages the Python environment |
+| Python | 3.11 recommended | Matches the backend Docker image |
 | Node.js and npm | Node 18 or newer | Developed on Node 23 |
 | ffmpeg | any recent | Audio extraction |
 | GPU | optional | Apple MPS or NVIDIA CUDA is used automatically; CPU works but is slow |
@@ -75,19 +75,21 @@ The first run downloads several GB of pretrained model weights from Hugging Face
 brew install ffmpeg node
 ```
 
-**2. Python environment.** The launch scripts expect a conda environment named `fantasy`. Set `CONDA_ENV=<name>` to use another name.
+**2. Python environment**, from the repo root. Use the root environment, not the retired `media-server/.venv`:
 
 ```bash
-conda create -n fantasy python=3.14
-conda activate fantasy
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
 ```
 
-**3. Python packages**, from the repo root:
+Alternatively, create a Conda environment with Python 3.11.
+
+**3. Python packages:**
 
 ```bash
-pip install -r requirements-minimal.txt              # ML stack (torch, transformers, librosa, OpenCV, ...)
-pip install -r app/backend/requirements_conda.txt    # backend (FastAPI, uvicorn, Whisper via transformers, ...)
-pip install -e .                                     # makes the `telesense_ml` package importable
+python -m pip install -r app/backend/requirements.txt  # complete backend + shared ML dependencies
+python -m pip install -e .                           # makes telesense_ml importable
 ```
 
 `requirements.txt` is the same list plus `dlib` and `face-recognition`, which add face cropping but often fail to build. If you want them, install dlib from conda-forge first: `conda install -c conda-forge dlib`.
@@ -122,7 +124,7 @@ Start the backend and frontend in two terminals from the repo root:
 
 Without conda, `./app/start_backend.sh` creates a virtual environment in `app/backend/venv` and installs `app/backend/requirements.txt` on first run.
 
-The backend listens on `127.0.0.1` only, so other machines on your network can't reach it. The API has no authentication, so don't change this to `0.0.0.0` or put it behind a public address.
+The backend listens on `127.0.0.1` only, so other machines on your network can't reach it. Set `TELESENSE_DEMO_KEY` to enable shared-key authentication. See [DEPLOYMENT.md](DEPLOYMENT.md) for the gated demo launch commands and public hosting setup.
 
 Open http://localhost:3000, drop in an `.mp4`, `.mov`, `.avi`, `.mkv`, `.wav`, `.mp3`, `.m4a` or `.flac` file, and wait for the analysis to finish.
 
@@ -285,3 +287,17 @@ No datasets, recordings, analysis output or other data files are committed, and 
 ## Portfolio deployment
 
 See [DEPLOYMENT.md](DEPLOYMENT.md) for the Vercel frontend and single-instance Fly.io CPU backend setup, demo-key gate, persistent model cache, and smoke checks. Use synthetic or explicitly public demo recordings only.
+
+### Public sample demo
+
+**Live demo: [telesense.vercel.app](https://telesense.vercel.app)**
+
+The portfolio frontend includes three short excerpts from the approved `test_data` collection with real saved pretrained-model results. Explore synchronized playback, waveforms, transcript search, per-modality timelines, signal inspection, and JSON export without a key. The interface labels saved results and model limitations explicitly.
+
+Run `npm run dev --prefix app/frontend -- --port 5173` for local preview. Run `HF_HOME=app/storage/hf-cache python scripts/build_demo_samples.py --force` in the root Python environment to regenerate approved sample assets and results. This requires local source recordings, model downloads, and CPU inference. Keep `VITE_API_URL` unset for a Vercel sample-only deployment; configure it with the Fly backend URL to enable gated uploads.
+
+Live uploads use the Fly backend at `https://telesense-demo-api.fly.dev`. Enter the shared key from the ignored root `.env.local` on the upload screen; the published sample library remains open without a key.
+
+The **Models & context** guide documents the deployed Whisper/Wav2Vec2/RoBERTa pipeline, inactive research tracks, how heuristic concern labels differ from diagnosis, and links to primary model cards and NIMH clinical information. See [SAMPLE_DATA.md](SAMPLE_DATA.md) for the researched recording-source shortlist and reuse constraints; no additional third-party recordings have been published from that shortlist yet.
+
+The dark review workspace visualizes actual transcript excerpts, first per-modality flag scores, and combined flag counts in curved model-output panels. Animated connectors show the transcription/language path and parallel vocal-analysis path; reduced-motion preferences disable animation.

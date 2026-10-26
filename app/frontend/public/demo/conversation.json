@@ -1,0 +1,641 @@
+{
+  "job_id": "64e2d42b-92c3-48a3-8209-aaf4d30983a8",
+  "video_id": "13a79cc1-abbb-49ab-800b-8db39bbb855e",
+  "duration": 8.800451500684654,
+  "fps": 23.976042590949422,
+  "num_frames": 211,
+  "visual_flags": [],
+  "audio_flags": [
+    {
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "start_frame": 0,
+      "end_frame": 71,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.829208105802536,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 0.5,
+      "end_time": 3.5,
+      "start_frame": 11,
+      "end_frame": 83,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.6286803036928177,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 1.5,
+      "end_time": 4.5,
+      "start_frame": 35,
+      "end_frame": 107,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.5663591809570789,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.0,
+      "end_time": 5.0,
+      "start_frame": 47,
+      "end_frame": 119,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.6797759979963303,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.5,
+      "end_time": 5.5,
+      "start_frame": 59,
+      "end_frame": 131,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.6460041254758835,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.0,
+      "end_time": 6.0,
+      "start_frame": 71,
+      "end_frame": 143,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.5509676560759544,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.5,
+      "end_time": 6.5,
+      "start_frame": 83,
+      "end_frame": 155,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.5365306213498116,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 4.0,
+      "end_time": 7.0,
+      "start_frame": 95,
+      "end_frame": 167,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.5565675422549248,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 4.5,
+      "end_time": 7.5,
+      "start_frame": 107,
+      "end_frame": 179,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.527923334389925,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.0,
+      "end_time": 8.8,
+      "start_frame": 143,
+      "end_frame": 210,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.5120064715544382,
+      "severity": "low",
+      "modality": "audio",
+      "severity_reasoning": null
+    }
+  ],
+  "text_flags": [
+    {
+      "start_time": 0.0,
+      "end_time": 3.12,
+      "start_frame": 0,
+      "end_frame": 74,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7103803157806396,
+      "severity": "medium",
+      "modality": "text",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.2,
+      "end_time": 6.3,
+      "start_frame": 76,
+      "end_frame": 151,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.54166579246521,
+      "severity": "low",
+      "modality": "text",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.3,
+      "end_time": 8.78,
+      "start_frame": 151,
+      "end_frame": 210,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.66119784116745,
+      "severity": "medium",
+      "modality": "text",
+      "severity_reasoning": null
+    }
+  ],
+  "combined_flags": [
+    {
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "start_frame": 0,
+      "end_frame": 71,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.829208105802536,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 0.5,
+      "end_time": 3.5,
+      "start_frame": 11,
+      "end_frame": 83,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.6286803036928177,
+      "severity": "low",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.0,
+      "end_time": 5.0,
+      "start_frame": 47,
+      "end_frame": 119,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.6797759979963303,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.5,
+      "end_time": 5.5,
+      "start_frame": 59,
+      "end_frame": 131,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.6460041254758835,
+      "severity": "low",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 0.0,
+      "end_time": 3.12,
+      "start_frame": 0,
+      "end_frame": 74,
+      "concern_type": 0,
+      "concern_name": "Depression",
+      "confidence": 0.7103803157806396,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.3,
+      "end_time": 8.78,
+      "start_frame": 151,
+      "end_frame": 210,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.66119784116745,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    }
+  ],
+  "transcript": [
+    {
+      "start_time": 0.0,
+      "end_time": 3.12,
+      "text": "What's all this about you guys fighting?",
+      "words": [
+        {
+          "word": "What's",
+          "start_time": 0.0,
+          "end_time": 0.44,
+          "confidence": null
+        },
+        {
+          "word": "all",
+          "start_time": 0.44,
+          "end_time": 0.54,
+          "confidence": null
+        },
+        {
+          "word": "this",
+          "start_time": 0.54,
+          "end_time": 0.68,
+          "confidence": null
+        },
+        {
+          "word": "about",
+          "start_time": 0.68,
+          "end_time": 0.96,
+          "confidence": null
+        },
+        {
+          "word": "you",
+          "start_time": 0.96,
+          "end_time": 1.16,
+          "confidence": null
+        },
+        {
+          "word": "guys",
+          "start_time": 1.16,
+          "end_time": 1.38,
+          "confidence": null
+        },
+        {
+          "word": "fighting?",
+          "start_time": 1.38,
+          "end_time": 3.12,
+          "confidence": null
+        }
+      ],
+      "flags": [
+        {
+          "start_time": 0.0,
+          "end_time": 3.0,
+          "start_frame": 0,
+          "end_frame": 71,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.829208105802536,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 0.5,
+          "end_time": 3.5,
+          "start_frame": 11,
+          "end_frame": 83,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.6286803036928177,
+          "severity": "low",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 2.0,
+          "end_time": 5.0,
+          "start_frame": 47,
+          "end_frame": 119,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.6797759979963303,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 2.5,
+          "end_time": 5.5,
+          "start_frame": 59,
+          "end_frame": 131,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.6460041254758835,
+          "severity": "low",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 0.0,
+          "end_time": 3.12,
+          "start_frame": 0,
+          "end_frame": 74,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.7103803157806396,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        }
+      ]
+    },
+    {
+      "start_time": 3.2,
+      "end_time": 6.3,
+      "text": "Is this really over a room?",
+      "words": [
+        {
+          "word": "Is",
+          "start_time": 3.2,
+          "end_time": 3.96,
+          "confidence": null
+        },
+        {
+          "word": "this",
+          "start_time": 3.96,
+          "end_time": 4.08,
+          "confidence": null
+        },
+        {
+          "word": "really",
+          "start_time": 4.08,
+          "end_time": 4.62,
+          "confidence": null
+        },
+        {
+          "word": "over",
+          "start_time": 4.62,
+          "end_time": 5.2,
+          "confidence": null
+        },
+        {
+          "word": "a",
+          "start_time": 5.2,
+          "end_time": 5.52,
+          "confidence": null
+        },
+        {
+          "word": "room?",
+          "start_time": 5.52,
+          "end_time": 6.3,
+          "confidence": null
+        }
+      ],
+      "flags": [
+        {
+          "start_time": 0.5,
+          "end_time": 3.5,
+          "start_frame": 11,
+          "end_frame": 83,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.6286803036928177,
+          "severity": "low",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 2.0,
+          "end_time": 5.0,
+          "start_frame": 47,
+          "end_frame": 119,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.6797759979963303,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 2.5,
+          "end_time": 5.5,
+          "start_frame": 59,
+          "end_frame": 131,
+          "concern_type": 0,
+          "concern_name": "Depression",
+          "confidence": 0.6460041254758835,
+          "severity": "low",
+          "modality": "combined",
+          "severity_reasoning": null
+        }
+      ]
+    },
+    {
+      "start_time": 6.3,
+      "end_time": 8.78,
+      "text": "I mean, that is so silly.",
+      "words": [
+        {
+          "word": "I",
+          "start_time": 6.3,
+          "end_time": 6.36,
+          "confidence": null
+        },
+        {
+          "word": "mean,",
+          "start_time": 6.36,
+          "end_time": 6.58,
+          "confidence": null
+        },
+        {
+          "word": "that",
+          "start_time": 6.58,
+          "end_time": 6.66,
+          "confidence": null
+        },
+        {
+          "word": "is",
+          "start_time": 6.66,
+          "end_time": 6.86,
+          "confidence": null
+        },
+        {
+          "word": "so",
+          "start_time": 6.86,
+          "end_time": 7.42,
+          "confidence": null
+        },
+        {
+          "word": "silly.",
+          "start_time": 7.42,
+          "end_time": 8.78,
+          "confidence": null
+        }
+      ],
+      "flags": [
+        {
+          "start_time": 6.3,
+          "end_time": 8.78,
+          "start_frame": 151,
+          "end_frame": 210,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.66119784116745,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        }
+      ]
+    }
+  ],
+  "frame_predictions": [],
+  "audio_url": "/demo/conversation.wav",
+  "statistics": {
+    "total_flags": 6,
+    "flags_by_severity": {
+      "high": 1,
+      "medium": 3,
+      "low": 2
+    },
+    "flags_by_type": {
+      "Depression": 5,
+      "Behavioral_Concern": 1
+    }
+  },
+  "file_type": "video",
+  "evaluations": [
+    {
+      "name": "text",
+      "basis": "transcript",
+      "method": "Rule-based phrase matching for protective factors and coverage of critical intake topics.",
+      "notes": [
+        "6 flags raised by the analysis (1 high risk).",
+        "0 protective factor categories mentioned; 11 of 11 critical intake topics not discussed.",
+        "Generated by phrase matching on the transcript; review before clinical use."
+      ],
+      "flags": [],
+      "protective_factors": [],
+      "missing_critical_questions": [
+        "Ask directly about suicidal ideation, intent or plan (safety)",
+        "Ask about homicidal ideation or thoughts of harming others (safety)",
+        "Ask about access to firearms or other lethal means (safety)",
+        "Ask about sleep (onset, maintenance, changes)",
+        "Ask about appetite and weight changes (depression screen)",
+        "Ask about substance use (alcohol, drugs, cannabis)",
+        "Screen for psychosis or mania (hallucinations, racing thoughts)",
+        "Ask about trauma history",
+        "Assess mood and anxiety symptoms (depression, anxiety)",
+        "Ask about current medications and adherence",
+        "Assess social support and functional impact (work, relationships)"
+      ]
+    }
+  ],
+  "emotion_summary": {
+    "assumptions": [
+      "Scores averaged across audio, text detectors on a 5s grid.",
+      "Detector labels mapped onto a shared set of 7 emotions."
+    ],
+    "event_points": [
+      {
+        "time_s": 0.0,
+        "timestamp": "00:00",
+        "emotions": {
+          "neutral": 0.066,
+          "joy": 0.177,
+          "sadness": 0.393,
+          "anger": 0.197,
+          "fear": 0.0,
+          "surprise": 0.141,
+          "disgust": 0.0
+        },
+        "top_emotions": [
+          [
+            "sadness",
+            0.393
+          ],
+          [
+            "anger",
+            0.197
+          ]
+        ],
+        "evidence": {
+          "text": "What's all this about you guys fighting?"
+        }
+      },
+      {
+        "time_s": 5.0,
+        "timestamp": "00:05",
+        "emotions": {
+          "neutral": 0.069,
+          "joy": 0.352,
+          "sadness": 0.368,
+          "anger": 0.077,
+          "fear": 0.0,
+          "surprise": 0.098,
+          "disgust": 0.0
+        },
+        "top_emotions": [
+          [
+            "sadness",
+            0.368
+          ],
+          [
+            "joy",
+            0.352
+          ]
+        ],
+        "evidence": {
+          "text": "Is this really over a room?"
+        }
+      }
+    ],
+    "windows": [
+      {
+        "start_timestamp": "00:00",
+        "end_timestamp": "00:08",
+        "dominant_emotions": [
+          [
+            "sadness",
+            0.381
+          ],
+          [
+            "joy",
+            0.264
+          ]
+        ],
+        "notes": ""
+      }
+    ]
+  },
+  "metadata": {
+    "files_provided": [
+      "video",
+      "audio"
+    ],
+    "modalities_used": [
+      "video",
+      "audio",
+      "text"
+    ],
+    "notes": [
+      "Analyzed with pretrained emotion models (no trained Telesense model in use).",
+      "No model checkpoint configured."
+    ]
+  },
+  "engine": {
+    "name": "pretrained",
+    "checkpoint": null,
+    "note": "No model checkpoint configured."
+  },
+  "created_at": "2026-10-25T21:14:11.599892",
+  "processing_time": 8.307763,
+  "sample_provenance": {
+    "source": "test_data/76fdb89f-aa0b-451a-9784-8195744314c4/video.mp4",
+    "offset_seconds": 0,
+    "excerpt_seconds": 8.8,
+    "kind": "precomputed_model_output",
+    "visual_emotion_model": "unavailable"
+  }
+}

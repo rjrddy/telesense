@@ -19,11 +19,10 @@ WORKDIR /app
 
 # Install Python deps first so edits to app code don't bust the big layer.
 COPY requirements-minimal.txt ./
-COPY app/backend/requirements_conda.txt ./backend-requirements.txt
+COPY app/backend/requirements.txt ./app/backend/requirements.txt
 RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir torch torchaudio torchvision --index-url https://download.pytorch.org/whl/cpu \
-    && pip install --no-cache-dir "transformers>=4.35,<5" "moviepy>=1.0.3,<2" -r requirements-minimal.txt \
-    && pip install --no-cache-dir -r backend-requirements.txt
+    && pip install --no-cache-dir "torch>=2.6,<2.9" "torchaudio>=2.6,<2.9" "torchvision>=0.21,<0.24" --index-url https://download.pytorch.org/whl/cpu \
+    && pip install --no-cache-dir -r app/backend/requirements.txt
 
 # App source + editable install of the telesense_ml package.
 COPY pyproject.toml README.md ./

@@ -7,7 +7,6 @@ from pathlib import Path
 
 try:
     from transformers import WhisperProcessor, WhisperForConditionalGeneration
-    from transformers.pipelines.audio_utils import ffmpeg_microphone_live, ffmpeg_utils
     TRANSFORMERS_AVAILABLE = True
 except ImportError:
     TRANSFORMERS_AVAILABLE = False
@@ -63,7 +62,7 @@ class Transcriber:
                 print(f"Loading Whisper model using transformers library (size: {self.model_size})...")
                 model_name = f"openai/whisper-{self.model_size}"
                 self.processor = WhisperProcessor.from_pretrained(model_name)
-                self.model = WhisperForConditionalGeneration.from_pretrained(model_name)
+                self.model = WhisperForConditionalGeneration.from_pretrained(model_name, attn_implementation="eager")
                 # MPS works fine with transformers
                 self.model.to(self.device)
                 self.use_openai_whisper = False
@@ -171,123 +170,7 @@ class Transcriber:
     
     def _transcribe_transformers(self, audio_path: str, language: Optional[str],
                                  word_timestamps: bool) -> Dict:
-        """
-        Transcribe using transformers library.
-        Input:
-            audio_path - path to the audio file
-            language - language code to force (auto-detected when None)
-            word_timestamps - include word-level timestamps when True
-
-        Output:
-            Dictionary with full text, segments, words and detected language
-        """
-        import librosa
-        
-        # Load audio
-        audio, sr = librosa.load(audio_path, sr=16000)
-        duration = len(audio) / sr
-        
-        # Process
-        inputs = self.processor(audio, sampling_rate=sr, return_tensors="pt")
-        inputs = {k: v.to(self.device) for k, v in inputs.items()}
-        
-        # Generate with language if specified
-        generate_kwargs = {}
-        if language:
-            # Set language token
-            forced_decoder_ids = self.processor.get_decoder_prompt_ids(language=language, task="transcribe")
-            generate_kwargs["forced_decoder_ids"] = forced_decoder_ids
-        
-        # Generate transcription
-        with torch.no_grad():
-            generated_ids = self.model.generate(**inputs, **generate_kwargs)
-        
-        # Decode transcription
-        transcription = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
-        
-        # For word-level timestamps, we need to use the model's decoder outputs
-        # Enhanced approach: better timestamp estimation with word length consideration
-        words = []
-        segments = []
-        
-        if word_timestamps and transcription.strip():
-            # Split transcription into words
-            word_list = transcription.strip().split()
-            
-            if len(word_list) > 0:
-                # Estimate words per second (considering pauses)
-                # Average speaking rate: 150-200 words per minute = 2.5-3.3 words per second
-                # Use a more conservative estimate
-                avg_words_per_second = 2.5
-                estimated_duration = len(word_list) / avg_words_per_second
-                
-                # Adjust if we have actual duration
-                if duration > 0:
-                    words_per_second = len(word_list) / duration
-                else:
-                    words_per_second = avg_words_per_second
-                    duration = estimated_duration
-                
-                # Create word timestamps with variable duration based on word length
-                current_time = 0.0
-                for word in word_list:
-                    # Base duration on word length (longer words take more time)
-                    base_duration = 0.3  # Base 300ms per word
-                    length_factor = len(word) / 5.0  # Average word length ~5 chars
-                    word_duration = base_duration * (0.7 + 0.3 * length_factor)
-                    
-                    # Add small pause between words (50ms)
-                    pause = 0.05
-                    
-                    words.append({
-                        "word": word,
-                        "start_time": current_time,
-                        "end_time": min(current_time + word_duration, duration),
-                        "confidence": None
-                    })
-                    current_time += word_duration + pause
-            
-            # Group words into segments (simple sentence splitting)
-            current_segment = {"start_time": 0.0, "text": "", "words": []}
-            for word in words:
-                if not current_segment["text"]:
-                    current_segment["start_time"] = word["start_time"]
-                
-                if current_segment["text"]:
-                    current_segment["text"] += " " + word["word"]
-                else:
-                    current_segment["text"] = word["word"]
-                
-                current_segment["end_time"] = word["end_time"]
-                current_segment["words"].append(word)
-                
-                # End segment on punctuation
-                if word["word"].endswith(('.', '!', '?', '。', '！', '？')):
-                    segments.append({
-                        "start_time": current_segment["start_time"],
-                        "end_time": current_segment["end_time"],
-                        "text": current_segment["text"]
-                    })
-                    current_segment = {"start_time": word["end_time"], "text": "", "words": []}
-            
-            # Add final segment if exists
-            if current_segment["text"]:
-                segments.append({
-                    "start_time": current_segment["start_time"],
-                    "end_time": current_segment["end_time"],
-                    "text": current_segment["text"]
-                })
-        else:
-            # No word timestamps - create single segment
-            segments.append({
-                "start_time": 0.0,
-                "end_time": duration,
-                "text": transcription
-            })
-        
-        return {
-            "text": transcription.strip(),
-            "segments": segments,
-            "words": words,
-            "language": language or "unknown"
-        }
+        from .whisper_transcription import transcribe_audio
+        return transcribe_audio(
+            self.model, self.processor, self.device, audio_path, language, word_timestamps
+        )

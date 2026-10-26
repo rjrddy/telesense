@@ -1,0 +1,38 @@
+[
+  {
+    "id": "conversation",
+    "title": "Dialogue clip",
+    "subtitle": "Short video \u00b7 audio + transcript",
+    "description": "A brief dialogue clip for exploring synchronized playback and model signals.",
+    "type": "video",
+    "duration": 8.800451500684654,
+    "media": "/demo/conversation.mp4",
+    "audio": "/demo/conversation.wav",
+    "poster": "/demo/conversation.jpg",
+    "results": "/demo/conversation.json"
+  },
+  {
+    "id": "listening",
+    "title": "Interview excerpt 01",
+    "subtitle": "Audio excerpt \u00b7 speech + language",
+    "description": "A longer listening sample to explore how vocal and language signals change over time.",
+    "type": "audio",
+    "duration": 45.0,
+    "media": "/demo/listening.mp3",
+    "audio": "/demo/listening.wav",
+    "poster": null,
+    "results": "/demo/listening.json"
+  },
+  {
+    "id": "reflection",
+    "title": "Interview excerpt 02",
+    "subtitle": "Audio excerpt \u00b7 speech + language",
+    "description": "A second excerpt from the same recording, with its own transcript and signal timeline.",
+    "type": "audio",
+    "duration": 30.0,
+    "media": "/demo/reflection.mp3",
+    "audio": "/demo/reflection.wav",
+    "poster": null,
+    "results": "/demo/reflection.json"
+  }
+]

@@ -1,23 +1,2 @@
-# Minimal requirements for conda environments
-# Most packages (torch, numpy, pandas, etc.) are already installed via conda
-
-fastapi>=0.104.0
-uvicorn[standard]>=0.24.0
-python-multipart>=0.0.6
-websockets>=12.0
-moviepy>=1.0.3
-transformers>=4.35.0
-pyyaml>=6.0
-pydantic>=2.0.0
-openai>=1.0.0
-anthropic>=0.18.0
-librosa>=0.10.0
-# deepface>=0.0.79  # Optional - requires TensorFlow (may conflict with PyTorch)
-# Note: DeepFace requires TensorFlow which conflicts with PyTorch environments
-# Video emotion detection will use PyTorch alternative (FER) if DeepFace is not available
-# fer>=22.5.0  # Optional - PyTorch-based facial emotion recognition (alternative to DeepFace)
-# Note: FER may try to build numpy from source. Install separately if needed:
-#   pip install fer --no-build-isolation
-#   OR use conda: conda install -c conda-forge fer (if available)
-# pyannote.audio>=3.1.0  # Optional - VAD will use fallback if not available
-scipy>=1.10.0
+# Compatibility entry point: use the same complete dependencies as pip/Docker.
+-r requirements.txt

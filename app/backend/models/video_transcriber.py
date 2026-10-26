@@ -73,7 +73,7 @@ class VideoTranscriber:
                 print(f"Loading Whisper model for video transcription (size: {self.model_size})...")
                 model_name = f"openai/whisper-{self.model_size}"
                 self.processor = WhisperProcessor.from_pretrained(model_name)
-                self.model = WhisperForConditionalGeneration.from_pretrained(model_name)
+                self.model = WhisperForConditionalGeneration.from_pretrained(model_name, attn_implementation="eager")
                 self.model.to(self.device)
                 self.use_openai_whisper = False
                 print(f"Successfully loaded transformers Whisper model on {self.device}")
@@ -306,100 +306,8 @@ class VideoTranscriber:
         }
     
     def _transcribe_transformers(self, audio_path: str, language: Optional[str],
-                                word_timestamps: bool) -> Dict:
-        """
-        Transcribe using transformers library.
-        Input:
-            audio_path - path to the audio file
-            language - language code to force (auto-detected when None)
-            word_timestamps - include word-level timestamps when True
-
-        Output:
-            Dictionary with full text, segments, words and detected language
-        """
-        import librosa
-        
-        # Load audio
-        audio, sr = librosa.load(audio_path, sr=16000)
-        duration = len(audio) / sr
-        
-        # Process
-        inputs = self.processor(audio, sampling_rate=sr, return_tensors="pt")
-        inputs = {k: v.to(self.device) for k, v in inputs.items()}
-        
-        # Generate with language if specified
-        generate_kwargs = {}
-        if language:
-            forced_decoder_ids = self.processor.get_decoder_prompt_ids(language=language, task="transcribe")
-            generate_kwargs["forced_decoder_ids"] = forced_decoder_ids
-        
-        # Generate transcription
-        with torch.no_grad():
-            generated_ids = self.model.generate(**inputs, **generate_kwargs)
-        
-        # Decode transcription
-        transcription = self.processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
-        
-        # For word-level timestamps, estimate based on word positions
-        words = []
-        segments = []
-        
-        if word_timestamps and transcription.strip():
-            word_list = transcription.strip().split()
-            words_per_second = len(word_list) / duration if duration > 0 else 0
-            
-            current_time = 0.0
-            for word in word_list:
-                word_duration = 1.0 / words_per_second if words_per_second > 0 else 0.1
-                words.append({
-                    "word": word,
-                    "start_time": current_time,
-                    "end_time": min(current_time + word_duration, duration),
-                    "confidence": None
-                })
-                current_time += word_duration
-            
-            # Group words into segments
-            current_segment = {"start_time": 0.0, "text": "", "words": []}
-            for word in words:
-                if not current_segment["text"]:
-                    current_segment["start_time"] = word["start_time"]
-                
-                if current_segment["text"]:
-                    current_segment["text"] += " " + word["word"]
-                else:
-                    current_segment["text"] = word["word"]
-                
-                current_segment["end_time"] = word["end_time"]
-                current_segment["words"].append(word)
-                
-                # End segment on punctuation
-                if word["word"].endswith(('.', '!', '?', '。', '！', '？')):
-                    segments.append({
-                        "start_time": current_segment["start_time"],
-                        "end_time": current_segment["end_time"],
-                        "text": current_segment["text"]
-                    })
-                    current_segment = {"start_time": word["end_time"], "text": "", "words": []}
-            
-            # Add final segment if exists
-            if current_segment["text"]:
-                segments.append({
-                    "start_time": current_segment["start_time"],
-                    "end_time": current_segment["end_time"],
-                    "text": current_segment["text"]
-                })
-        else:
-            # No word timestamps - create single segment
-            segments.append({
-                "start_time": 0.0,
-                "end_time": duration,
-                "text": transcription
-            })
-        
-        return {
-            "text": transcription.strip(),
-            "segments": segments,
-            "words": words,
-            "language": language or "unknown"
-        }
+                                 word_timestamps: bool) -> Dict:
+        from .whisper_transcription import transcribe_audio
+        return transcribe_audio(
+            self.model, self.processor, self.device, audio_path, language, word_timestamps
+        )

@@ -8,8 +8,8 @@ version = "0.1.0"
 description = "Prototype multimodal (audio, video, text) behavioral analysis for telehealth sessions"
 readme = "README.md"
 requires-python = ">=3.10"
-# Runtime dependencies live in requirements.txt (dlib and the torch stack are easier
-# to install through conda first); `pip install -e .` only makes `telesense_ml` importable.
+# Install app/backend/requirements.txt for the complete demo environment.
+# `pip install -e .` makes telesense_ml importable without reinstalling the stack.
 
 [tool.setuptools.packages.find]
 where = ["src"]

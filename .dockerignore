@@ -17,3 +17,11 @@ app/storage
 .aws
 .codex
 .agents
+
+# Portfolio-only assets and local tooling are not backend build inputs.
+.vercel
+.claude
+app/frontend
+media-server
+signaling
+web

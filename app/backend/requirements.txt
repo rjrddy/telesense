@@ -1,25 +1,18 @@
+# Complete backend environment, including the shared ML package dependencies.
+# Use Python 3.11. Install with: python -m pip install -r app/backend/requirements.txt
+-r ../../requirements-minimal.txt
+
 fastapi>=0.104.0
 uvicorn[standard]>=0.24.0
 python-multipart>=0.0.6
 websockets>=12.0
-moviepy>=1.0.3
-# openai-whisper>=20231117  # Optional - has OpenMP conflicts, using transformers instead
-transformers>=4.35.0
-# torch>=2.0.0  # Usually installed via conda
-# torchaudio>=2.0.0  # Usually installed via conda
-# torchvision>=0.15.0  # Usually installed via conda
-# opencv-python>=4.8.0  # Usually installed via conda
-# librosa>=0.10.0  # Usually installed via conda
-# soundfile>=0.12.0  # Usually installed via conda
-# numpy>=1.24.0  # Usually installed via conda
-# pandas>=2.0.0  # Usually installed via conda
-pyyaml>=6.0
+# The app imports moviepy.editor, which was removed in MoviePy 2.
+moviepy>=1.0.3,<2
 pydantic>=2.0.0
-# deepface>=0.0.79  # Optional - requires TensorFlow (may conflict with PyTorch)
-# Note: DeepFace requires TensorFlow which conflicts with PyTorch environments
-# Video emotion detection will use PyTorch alternative (FER) if DeepFace is not available
-# fer>=22.5.0  # Optional - PyTorch-based facial emotion recognition (alternative to DeepFace)
-# Note: FER may try to build numpy from source in conda environments. Install separately if needed:
-#   pip install fer --no-build-isolation
-# pyannote.audio>=3.1.0  # Optional - VAD will use fallback if not available
-scipy>=1.10.0
+# Used by optional LLM integration; no API keys needed for the default pipeline.
+openai>=1.0.0
+anthropic>=0.18.0
+
+# Optional integrations, intentionally excluded from the demo environment:
+# deepface / fer (facial emotion models), pyannote.audio (VAD), openai-whisper
+# Transformers Whisper and librosa VAD provide the default paths.

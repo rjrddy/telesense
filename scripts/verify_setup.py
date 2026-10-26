@@ -3,7 +3,8 @@ Quick verification script to check if the setup is correct.
 """
 
 import sys
-import torch
+import importlib
+import shutil
 
 def check_imports():
     """
@@ -35,6 +36,7 @@ def check_device():
     Output:
         Best available device name ('mps', 'cuda' or 'cpu')
     """
+    import torch
     print("\nChecking device...")
     if torch.backends.mps.is_available():
         print("✓ MPS (Metal) available")
@@ -64,7 +66,10 @@ def check_dependencies():
         'numpy',
         'pandas',
         'cv2',
-        'librosa'
+        'librosa',
+        'fastapi', 'uvicorn', 'multipart', 'websockets', 'soundfile',
+        'scipy', 'sklearn', 'yaml', 'omegaconf', 'datasets',
+        'moviepy.editor', 'transformers.pipelines.audio_utils'
     ]
     
     missing = []
@@ -75,15 +80,31 @@ def check_dependencies():
             elif dep == 'librosa':
                 import librosa
             else:
-                __import__(dep)
+                importlib.import_module(dep)
             print(f"✓ {dep}")
-        except ImportError:
-            print(f"✗ {dep} not found")
+        except Exception as error:
+            print(f"✗ {dep}: {error}")
             missing.append(dep)
     
     if missing:
         print(f"\nMissing dependencies: {', '.join(missing)}")
-        print("Install them with: pip install -r requirements.txt")
+        print("Install them with: python -m pip install -r app/backend/requirements.txt")
+        return False
+    if not shutil.which('ffmpeg') or not shutil.which('ffprobe'):
+        print("✗ ffmpeg/ffprobe missing; install system FFmpeg")
+        return False
+    print("✓ ffmpeg and ffprobe")
+    try:
+        from transformers import WhisperProcessor, WhisperForConditionalGeneration
+        from transformers import Wav2Vec2FeatureExtractor, Wav2Vec2ForSequenceClassification
+        from transformers import AutoTokenizer, AutoModelForSequenceClassification
+        from app.backend.main import app
+        from app.backend.models.transcriber import TRANSFORMERS_AVAILABLE
+        from app.backend.models.video_transcriber import TRANSFORMERS_AVAILABLE as VIDEO_AVAILABLE
+        assert TRANSFORMERS_AVAILABLE and VIDEO_AVAILABLE, "Whisper imports unavailable"
+        print("✓ Backend app, Whisper, and emotion model classes")
+    except Exception as error:
+        print(f"✗ Backend import: {error}")
         return False
     return True
 
@@ -103,14 +124,15 @@ def main():
     # Check Python version
     print(f"\nPython version: {sys.version}")
     
-    # Check imports
+    # Check dependencies before importing application modules.
+    deps_ok = check_dependencies()
+    if not deps_ok:
+        sys.exit(1)
     imports_ok = check_imports()
     
     # Check device
     device = check_device()
     
-    # Check dependencies
-    deps_ok = check_dependencies()
     
     print("\n" + "="*50)
     if imports_ok and deps_ok:
@@ -119,8 +141,12 @@ def main():
     else:
         print("✗ Setup verification failed")
         print("Please install missing dependencies and fix import errors")
+        sys.exit(1)
     print("="*50)
 
 if __name__ == '__main__':
+    # Direct script execution otherwise only puts scripts/ on sys.path.
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     main()
 

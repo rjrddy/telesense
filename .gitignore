@@ -91,3 +91,9 @@ app/storage/
 
 # Local reference documents (not redistributed)
 docs/
+
+# Deployment tooling and approved, generated portfolio demo assets
+.vercel/
+!app/frontend/public/demo/*.mp4
+!app/frontend/public/demo/*.mp3
+!app/frontend/public/demo/*.wav

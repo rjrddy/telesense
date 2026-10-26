@@ -294,14 +294,14 @@ def _process_video_analysis(job_id: str, video_id: str, video_path: str,
         # Transcribe audio
         if is_audio_only:
             # Use regular transcriber for audio-only files
-            transcriber = Transcriber(model_size="base")
+            transcriber = Transcriber(model_size="base", device=os.getenv("TELESENSE_DEVICE"))
             transcript_result = transcriber.transcribe(
                 audio_path=audio_path,
                 word_timestamps=True
             )
         else:
             # Use video transcriber for video files
-            video_transcriber = VideoTranscriber(model_size="base", use_visual_cues=True)
+            video_transcriber = VideoTranscriber(model_size="base", use_visual_cues=True, device=os.getenv("TELESENSE_DEVICE"))
             transcript_result = video_transcriber.transcribe(
                 video_path=video_path,
                 word_timestamps=True,
@@ -354,7 +354,7 @@ def _process_video_analysis(job_id: str, video_id: str, video_path: str,
         
         if analysis_result is None:
             print(f"Using pretrained models for analysis. {engine['note']}")
-            free_analyzer = FreeBehavioralAnalyzer()
+            free_analyzer = FreeBehavioralAnalyzer(device=os.getenv("TELESENSE_DEVICE"))
             
             # For audio-only files, pass None for video_path
             analysis_result = free_analyzer.analyze(

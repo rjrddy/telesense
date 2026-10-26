@@ -4,7 +4,7 @@ Research only. Not for clinical use. Use synthetic or explicitly public demo rec
 
 ## Backend: Fly.io
 
-Install Docker for local image checks and `flyctl` for deployment, then authenticate with `flyctl auth login`. Run these commands from the repository root on `telesense-ml-app`.
+Install Docker for local image checks and `flyctl` for deployment, then authenticate with `flyctl auth login`. Run these commands from the repository root on `main`.
 
 1. Choose a globally unique app name. The checked-in starting name is `telesense-demo-api`; availability is not guaranteed. Replace `app` in `fly.toml` if necessary.
 2. Run `flyctl launch --no-deploy`. Reuse the existing configuration when prompted. Check the resulting `fly.toml`: keep the Dockerfile build, `ord` region, `/data` mount, 8080 internal port, forced HTTPS, `/health` check, two shared vCPUs and 4 GB RAM. Keep autostop off so background jobs survive idle periods.
@@ -41,7 +41,7 @@ The container installs CPU PyTorch wheels and runs one Uvicorn worker. Its entry
 
 ## Frontend: Vercel
 
-Import the repository and select branch `telesense-ml-app` as the production branch. Keep Vercel's **Root Directory at the repository root (`.`)**: the root `vercel.json` explicitly installs and builds `app/frontend` and serves `app/frontend/dist`. Selecting `app/frontend` as the Vercel root would bypass this configuration.
+Import the repository and select branch `main` as the production branch. Keep Vercel's **Root Directory at the repository root (`.`)**: the root `vercel.json` explicitly installs and builds `app/frontend` and serves `app/frontend/dist`. Selecting `app/frontend` as the Vercel root would bypass this configuration.
 
 Set `VITE_API_URL=https://YOUR-FLY-APP.fly.dev` for Production (and Preview if used), then deploy. Vite embeds this URL at build time, so URL changes require a new frontend deployment. Leave `VITE_TELESENSE_DEMO_KEY` unset: all `VITE_*` variables are public browser bundle contents. Visitors enter the shared key in the demo-key field; it is stored in their browser's localStorage. Save an empty value to clear it.
 
@@ -52,9 +52,11 @@ Once Vercel assigns the production domain, update Fly's `CORS_ORIGINS` to match 
 With a Python 3.11 environment and Node/npm installed:
 
 ```sh
-pip install torch torchaudio torchvision --index-url https://download.pytorch.org/whl/cpu
-pip install 'transformers>=4.35,<5' 'moviepy>=1.0.3,<2' -r requirements-minimal.txt -r app/backend/requirements_conda.txt
-pip install -e .
+python3.11 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+python -m pip install -r app/backend/requirements.txt
+python -m pip install -e .
 TELESENSE_DEMO_KEY=test CORS_ORIGINS=http://localhost:5173 python -m uvicorn app.backend.main:app --host 127.0.0.1 --port 8000
 ```
 
@@ -110,3 +112,33 @@ Only one Machine and one worker are supported: job state is in memory, and analy
 `TELESENSE_MAX_UPLOAD_MB` defaults to 100 MiB for the entire multipart request, including overhead. Both declared-size and streamed bodies are capped before route processing. This is not a duration limit or storage quota. Uploaded media and results are retained until manually deleted; monitor volume usage and remove demo sessions when no longer needed. Do not remove the model cache unless you want weights downloaded again.
 
 Configuration references: [Fly app configuration](https://docs.fly.io/reference/configuration), [Vercel build configuration](https://vercel.com/docs/builds/configure-a-build).
+
+## Public sample explorer
+
+Production URL: **https://telesense.vercel.app**. The Vercel project is `telesense` under `raj-reddys-projects`, linked locally through ignored `.vercel/` metadata. For CLI deploys use `npx --yes vercel@latest deploy --prod --yes`; the older global CLI may be rejected by Vercel.
+
+The frontend includes three approved excerpts (one ~9-second video, one 45-second audio clip, and one 30-second audio clip) from `test_data` under `app/frontend/public/demo/`, with saved outputs from the real pretrained pipeline. Visitors can play recordings, search and seek transcripts, inspect modality timelines, and export JSON without a backend or key. Results are explicitly labeled as saved model analysis. Video emotion inference is unavailable; video provides playback context.
+
+Regenerate the sample assets from the local source collection with:
+
+```sh
+HF_HOME=app/storage/hf-cache python scripts/build_demo_samples.py --force
+```
+
+This downloads model weights and runs CPU inference locally. Only the selected short excerpts, their waveforms/audio, and saved results are published; the full `test_data` collection remains excluded. Each result records its source and excerpt offset under `sample_provenance`.
+
+For a portfolio deployment, **leave `VITE_API_URL` unset** until a Fly backend is running. The sample explorer works independently; the upload screen explains that new analysis is not connected and disables file submission. Localhost still defaults to the local backend. When Fly is ready, set `VITE_API_URL` to its HTTPS origin, set matching CORS and the shared key on Fly, and redeploy the frontend to enable uploads.
+
+The redesigned review workspace uses the same backend result format. Whisper now processes overlapping chunks with model-derived timestamps rather than estimating word positions from text length. Timestamps and transcripts can still be inaccurate.
+
+## Provisioned Fly resources
+
+App: `telesense-demo-api` in the personal Fly organization. Region: `ord` (Chicago). The `telesense_data` volume is 10 GB, mounted at `/data`. `fly.toml` configures two shared vCPUs, 4 GB RAM, CPU inference, and CORS for `https://telesense.vercel.app`.
+
+The Fly CLI is installed at `~/.fly/bin/flyctl`. Use that full path if `flyctl` is not on your shell PATH. The shared upload key is saved in the ignored root `.env.local` and stored in Fly secrets; never put it in a `VITE_*` variable or commit it.
+
+The live backend is deployed at **https://telesense-demo-api.fly.dev**. Vercel Production now sets `VITE_API_URL` to that origin, enabling the gated upload flow at **https://telesense.vercel.app**. Sample exploration still works without a key. For new uploads, copy the `TELESENSE_DEMO_KEY` value from the ignored root `.env.local` into the website's Shared demo key field and save it.
+
+Hosted verification passed: `/health`, missing-key 401, Vercel-origin CORS preflight, real video upload and CPU inference, results retrieval, protected extracted audio, and a browser upload from the public Vercel frontend through transcript/waveform/signal rendering.
+
+The black UI includes a model-output diagram with animated curved connectors. The library previews saved output from its first sample; session review uses that session’s actual results. Connector motion illustrates the data path rather than real-time inference, and respects reduced-motion preferences.
