@@ -97,3 +97,6 @@ docs/
 !app/frontend/public/demo/*.mp4
 !app/frontend/public/demo/*.mp3
 !app/frontend/public/demo/*.wav
+
+# Raw recording sources and downloaded corpus archives stay local.
+test_data/

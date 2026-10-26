@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Icon from "./components/Icon";
+import SampleAttribution from "./components/SampleAttribution";
 import ResearchGuide from "./components/ResearchGuide";
 import ModelFlow from "./components/ModelFlow";
 import SessionPlayer, { time } from "./components/SessionPlayer";
@@ -420,6 +421,7 @@ export default function App() {
                       onModels={() => openGuide("models")}
                     />
                   )}
+                  <SampleAttribution sample={selectedSample} />
                   <div className="inspector-bottom">
                     <span>
                       <Icon name="clock" size={14} />
@@ -453,9 +455,9 @@ export default function App() {
                   </span>
                   <h2>New sources, different kinds of evidence.</h2>
                   <p>
-                    Explore four sample-data candidates: read speech, acted
-                    emotion, multimodal performances, and restricted research
-                    interviews. Each has its own reuse terms.
+                    Compare the sources behind the sample library: read speech,
+                    acted emotion, multimodal performances, and restricted
+                    research interviews. Each has its own reuse terms.
                   </p>
                   <button
                     className="text-button"
@@ -514,6 +516,7 @@ export default function App() {
                   <strong>Research only</strong>
                 </span>
               </div>
+              {!session.live && <SampleAttribution sample={session} />}
               {loading && (
                 <div className="processing-panel" role="status">
                   <span>{status?.message || "Opening saved analysis…"}</span>

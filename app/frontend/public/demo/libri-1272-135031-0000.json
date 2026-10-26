@@ -1,0 +1,1115 @@
+{
+  "job_id": "49f3dbdb-5bda-4fc8-a2e6-598de7778505",
+  "video_id": "d6768c54-dee8-4e61-b3de-e7e126bc7dd6",
+  "duration": 10.885,
+  "fps": 30.0,
+  "num_frames": 326,
+  "visual_flags": [],
+  "audio_flags": [
+    {
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "start_frame": 0,
+      "end_frame": 90,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.9060219526290894,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 0.5,
+      "end_time": 3.5,
+      "start_frame": 15,
+      "end_frame": 105,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.9295346935590109,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 1.0,
+      "end_time": 4.0,
+      "start_frame": 30,
+      "end_frame": 120,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.9309494197368622,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 1.5,
+      "end_time": 4.5,
+      "start_frame": 45,
+      "end_frame": 135,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.9081608653068542,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.0,
+      "end_time": 5.0,
+      "start_frame": 60,
+      "end_frame": 150,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.8424743413925171,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.5,
+      "end_time": 5.5,
+      "start_frame": 75,
+      "end_frame": 165,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7911786586046219,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.0,
+      "end_time": 6.0,
+      "start_frame": 90,
+      "end_frame": 180,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7441238164901733,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.5,
+      "end_time": 6.5,
+      "start_frame": 105,
+      "end_frame": 195,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7238009423017502,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 4.0,
+      "end_time": 7.0,
+      "start_frame": 120,
+      "end_frame": 210,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.6895185559988022,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 4.5,
+      "end_time": 7.5,
+      "start_frame": 135,
+      "end_frame": 225,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.6733994781970978,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 5.0,
+      "end_time": 8.0,
+      "start_frame": 150,
+      "end_frame": 240,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7228637188673019,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 5.5,
+      "end_time": 8.5,
+      "start_frame": 165,
+      "end_frame": 255,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7738731503486633,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.0,
+      "end_time": 9.0,
+      "start_frame": 180,
+      "end_frame": 270,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.86837337911129,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.5,
+      "end_time": 9.5,
+      "start_frame": 195,
+      "end_frame": 285,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.8199205249547958,
+      "severity": "high",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 7.0,
+      "end_time": 10.0,
+      "start_frame": 210,
+      "end_frame": 300,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7428629845380783,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 7.5,
+      "end_time": 10.5,
+      "start_frame": 225,
+      "end_frame": 315,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.7229289412498474,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 8.0,
+      "end_time": 10.885,
+      "start_frame": 240,
+      "end_frame": 326,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.6625570853551229,
+      "severity": "medium",
+      "modality": "audio",
+      "severity_reasoning": null
+    }
+  ],
+  "text_flags": [
+    {
+      "start_time": 0.0,
+      "end_time": 8.32,
+      "start_frame": 0,
+      "end_frame": 249,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.6716050505638123,
+      "severity": "medium",
+      "modality": "text",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 8.32,
+      "end_time": 10.86,
+      "start_frame": 249,
+      "end_frame": 325,
+      "concern_type": 0,
+      "concern_name": "Emotional_Concern",
+      "confidence": 0.9673668742179871,
+      "severity": "high",
+      "modality": "text",
+      "severity_reasoning": null
+    }
+  ],
+  "combined_flags": [
+    {
+      "start_time": 0.0,
+      "end_time": 3.0,
+      "start_frame": 0,
+      "end_frame": 90,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.9060219526290894,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 0.5,
+      "end_time": 3.5,
+      "start_frame": 15,
+      "end_frame": 105,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.9295346935590109,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 1.0,
+      "end_time": 4.0,
+      "start_frame": 30,
+      "end_frame": 120,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.9309494197368622,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 1.5,
+      "end_time": 4.5,
+      "start_frame": 45,
+      "end_frame": 135,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.9081608653068542,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.0,
+      "end_time": 5.0,
+      "start_frame": 60,
+      "end_frame": 150,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.8424743413925171,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 2.5,
+      "end_time": 5.5,
+      "start_frame": 75,
+      "end_frame": 165,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7911786586046219,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.0,
+      "end_time": 6.0,
+      "start_frame": 90,
+      "end_frame": 180,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7441238164901733,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 3.5,
+      "end_time": 6.5,
+      "start_frame": 105,
+      "end_frame": 195,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7238009423017502,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 4.0,
+      "end_time": 7.0,
+      "start_frame": 120,
+      "end_frame": 210,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.6895185559988022,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 4.5,
+      "end_time": 7.5,
+      "start_frame": 135,
+      "end_frame": 225,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.6733994781970978,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 5.0,
+      "end_time": 8.0,
+      "start_frame": 150,
+      "end_frame": 240,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7228637188673019,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 5.5,
+      "end_time": 8.5,
+      "start_frame": 165,
+      "end_frame": 255,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7738731503486633,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.0,
+      "end_time": 9.0,
+      "start_frame": 180,
+      "end_frame": 270,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.86837337911129,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 6.5,
+      "end_time": 9.5,
+      "start_frame": 195,
+      "end_frame": 285,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.8199205249547958,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 7.0,
+      "end_time": 10.0,
+      "start_frame": 210,
+      "end_frame": 300,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7428629845380783,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 7.5,
+      "end_time": 10.5,
+      "start_frame": 225,
+      "end_frame": 315,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.7229289412498474,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 8.0,
+      "end_time": 10.885,
+      "start_frame": 240,
+      "end_frame": 326,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.6625570853551229,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 0.0,
+      "end_time": 8.32,
+      "start_frame": 0,
+      "end_frame": 249,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.6716050505638123,
+      "severity": "medium",
+      "modality": "combined",
+      "severity_reasoning": null
+    },
+    {
+      "start_time": 8.32,
+      "end_time": 10.86,
+      "start_frame": 249,
+      "end_frame": 325,
+      "concern_type": 0,
+      "concern_name": "Behavioral_Concern",
+      "confidence": 0.9673668742179871,
+      "severity": "high",
+      "modality": "combined",
+      "severity_reasoning": null
+    }
+  ],
+  "transcript": [
+    {
+      "start_time": 0.0,
+      "end_time": 8.32,
+      "text": "Because you were sleeping instead of conquering, the lovely Rose Princess has become a fiddle without a bow, all porous shaggy",
+      "words": [
+        {
+          "word": "Because",
+          "start_time": 0.0,
+          "end_time": 0.62,
+          "confidence": null
+        },
+        {
+          "word": "you",
+          "start_time": 0.62,
+          "end_time": 0.88,
+          "confidence": null
+        },
+        {
+          "word": "were",
+          "start_time": 0.88,
+          "end_time": 0.98,
+          "confidence": null
+        },
+        {
+          "word": "sleeping",
+          "start_time": 0.98,
+          "end_time": 1.4,
+          "confidence": null
+        },
+        {
+          "word": "instead",
+          "start_time": 1.4,
+          "end_time": 1.82,
+          "confidence": null
+        },
+        {
+          "word": "of",
+          "start_time": 1.82,
+          "end_time": 2.02,
+          "confidence": null
+        },
+        {
+          "word": "conquering,",
+          "start_time": 2.02,
+          "end_time": 3.26,
+          "confidence": null
+        },
+        {
+          "word": "the",
+          "start_time": 3.26,
+          "end_time": 3.46,
+          "confidence": null
+        },
+        {
+          "word": "lovely",
+          "start_time": 3.46,
+          "end_time": 3.74,
+          "confidence": null
+        },
+        {
+          "word": "Rose",
+          "start_time": 3.74,
+          "end_time": 4.14,
+          "confidence": null
+        },
+        {
+          "word": "Princess",
+          "start_time": 4.14,
+          "end_time": 4.58,
+          "confidence": null
+        },
+        {
+          "word": "has",
+          "start_time": 4.58,
+          "end_time": 4.94,
+          "confidence": null
+        },
+        {
+          "word": "become",
+          "start_time": 4.94,
+          "end_time": 5.2,
+          "confidence": null
+        },
+        {
+          "word": "a",
+          "start_time": 5.2,
+          "end_time": 5.44,
+          "confidence": null
+        },
+        {
+          "word": "fiddle",
+          "start_time": 5.44,
+          "end_time": 5.82,
+          "confidence": null
+        },
+        {
+          "word": "without",
+          "start_time": 6.02,
+          "end_time": 6.12,
+          "confidence": null
+        },
+        {
+          "word": "a",
+          "start_time": 6.12,
+          "end_time": 6.32,
+          "confidence": null
+        },
+        {
+          "word": "bow,",
+          "start_time": 6.32,
+          "end_time": 7.38,
+          "confidence": null
+        },
+        {
+          "word": "all",
+          "start_time": 7.38,
+          "end_time": 7.48,
+          "confidence": null
+        },
+        {
+          "word": "porous",
+          "start_time": 7.48,
+          "end_time": 7.98,
+          "confidence": null
+        },
+        {
+          "word": "shaggy",
+          "start_time": 7.98,
+          "end_time": 8.32,
+          "confidence": null
+        }
+      ],
+      "flags": [
+        {
+          "start_time": 0.0,
+          "end_time": 3.0,
+          "start_frame": 0,
+          "end_frame": 90,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.9060219526290894,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 0.5,
+          "end_time": 3.5,
+          "start_frame": 15,
+          "end_frame": 105,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.9295346935590109,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 1.0,
+          "end_time": 4.0,
+          "start_frame": 30,
+          "end_frame": 120,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.9309494197368622,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 1.5,
+          "end_time": 4.5,
+          "start_frame": 45,
+          "end_frame": 135,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.9081608653068542,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 2.0,
+          "end_time": 5.0,
+          "start_frame": 60,
+          "end_frame": 150,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.8424743413925171,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 2.5,
+          "end_time": 5.5,
+          "start_frame": 75,
+          "end_frame": 165,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7911786586046219,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 3.0,
+          "end_time": 6.0,
+          "start_frame": 90,
+          "end_frame": 180,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7441238164901733,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 3.5,
+          "end_time": 6.5,
+          "start_frame": 105,
+          "end_frame": 195,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7238009423017502,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 4.0,
+          "end_time": 7.0,
+          "start_frame": 120,
+          "end_frame": 210,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.6895185559988022,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 4.5,
+          "end_time": 7.5,
+          "start_frame": 135,
+          "end_frame": 225,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.6733994781970978,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 5.0,
+          "end_time": 8.0,
+          "start_frame": 150,
+          "end_frame": 240,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7228637188673019,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 5.5,
+          "end_time": 8.5,
+          "start_frame": 165,
+          "end_frame": 255,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7738731503486633,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 6.0,
+          "end_time": 9.0,
+          "start_frame": 180,
+          "end_frame": 270,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.86837337911129,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 6.5,
+          "end_time": 9.5,
+          "start_frame": 195,
+          "end_frame": 285,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.8199205249547958,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 7.0,
+          "end_time": 10.0,
+          "start_frame": 210,
+          "end_frame": 300,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7428629845380783,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 7.5,
+          "end_time": 10.5,
+          "start_frame": 225,
+          "end_frame": 315,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7229289412498474,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 8.0,
+          "end_time": 10.885,
+          "start_frame": 240,
+          "end_frame": 326,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.6625570853551229,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 0.0,
+          "end_time": 8.32,
+          "start_frame": 0,
+          "end_frame": 249,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.6716050505638123,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        }
+      ]
+    },
+    {
+      "start_time": 8.32,
+      "end_time": 10.86,
+      "text": "sits there accuing dove.",
+      "words": [
+        {
+          "word": "sits",
+          "start_time": 8.32,
+          "end_time": 8.58,
+          "confidence": null
+        },
+        {
+          "word": "there",
+          "start_time": 8.58,
+          "end_time": 8.96,
+          "confidence": null
+        },
+        {
+          "word": "accuing",
+          "start_time": 8.96,
+          "end_time": 9.7,
+          "confidence": null
+        },
+        {
+          "word": "dove.",
+          "start_time": 9.7,
+          "end_time": 10.86,
+          "confidence": null
+        }
+      ],
+      "flags": [
+        {
+          "start_time": 5.5,
+          "end_time": 8.5,
+          "start_frame": 165,
+          "end_frame": 255,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7738731503486633,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 6.0,
+          "end_time": 9.0,
+          "start_frame": 180,
+          "end_frame": 270,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.86837337911129,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 6.5,
+          "end_time": 9.5,
+          "start_frame": 195,
+          "end_frame": 285,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.8199205249547958,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 7.0,
+          "end_time": 10.0,
+          "start_frame": 210,
+          "end_frame": 300,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7428629845380783,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 7.5,
+          "end_time": 10.5,
+          "start_frame": 225,
+          "end_frame": 315,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.7229289412498474,
+          "severity": "medium",
+          "modality": "combined",
+          "severity_reasoning": null
+        },
+        {
+          "start_time": 8.32,
+          "end_time": 10.86,
+          "start_frame": 249,
+          "end_frame": 325,
+          "concern_type": 0,
+          "concern_name": "Behavioral_Concern",
+          "confidence": 0.9673668742179871,
+          "severity": "high",
+          "modality": "combined",
+          "severity_reasoning": null
+        }
+      ]
+    }
+  ],
+  "frame_predictions": [],
+  "audio_url": "/demo/libri-1272-135031-0000.wav",
+  "statistics": {
+    "total_flags": 19,
+    "flags_by_severity": {
+      "high": 8,
+      "medium": 11,
+      "low": 0
+    },
+    "flags_by_type": {
+      "Behavioral_Concern": 19
+    }
+  },
+  "file_type": "audio",
+  "evaluations": [
+    {
+      "name": "text",
+      "basis": "transcript",
+      "method": "Rule-based phrase matching for protective factors and coverage of critical intake topics.",
+      "notes": [
+        "19 flags raised by the analysis (8 high risk).",
+        "0 protective factor categories mentioned; 10 of 11 critical intake topics not discussed.",
+        "Generated by phrase matching on the transcript; review before clinical use."
+      ],
+      "flags": [],
+      "protective_factors": [],
+      "missing_critical_questions": [
+        "Ask directly about suicidal ideation, intent or plan (safety)",
+        "Ask about homicidal ideation or thoughts of harming others (safety)",
+        "Ask about access to firearms or other lethal means (safety)",
+        "Ask about appetite and weight changes (depression screen)",
+        "Ask about substance use (alcohol, drugs, cannabis)",
+        "Screen for psychosis or mania (hallucinations, racing thoughts)",
+        "Ask about trauma history",
+        "Assess mood and anxiety symptoms (depression, anxiety)",
+        "Ask about current medications and adherence",
+        "Assess social support and functional impact (work, relationships)"
+      ]
+    }
+  ],
+  "emotion_summary": {
+    "assumptions": [
+      "Scores averaged across audio, text detectors on a 5s grid.",
+      "Detector labels mapped onto a shared set of 7 emotions."
+    ],
+    "event_points": [
+      {
+        "time_s": 0.0,
+        "timestamp": "00:00",
+        "emotions": {
+          "neutral": 0.165,
+          "joy": 0.74,
+          "sadness": 0.065,
+          "anger": 0.0,
+          "fear": 0.0,
+          "surprise": 0.0,
+          "disgust": 0.0
+        },
+        "top_emotions": [
+          [
+            "joy",
+            0.74
+          ],
+          [
+            "neutral",
+            0.165
+          ]
+        ],
+        "evidence": {
+          "text": "Because you were sleeping instead of conquering, the lovely Rose Princess has become a fiddle without a bow, all porous shaggy"
+        }
+      },
+      {
+        "time_s": 5.0,
+        "timestamp": "00:05",
+        "emotions": {
+          "neutral": 0.265,
+          "joy": 0.638,
+          "sadness": 0.071,
+          "anger": 0.0,
+          "fear": 0.0,
+          "surprise": 0.0,
+          "disgust": 0.0
+        },
+        "top_emotions": [
+          [
+            "joy",
+            0.638
+          ],
+          [
+            "neutral",
+            0.265
+          ]
+        ],
+        "evidence": {
+          "text": "Because you were sleeping instead of conquering, the lovely Rose Princess has become a fiddle without a bow, all porous shaggy"
+        }
+      },
+      {
+        "time_s": 10.0,
+        "timestamp": "00:10",
+        "emotions": {
+          "neutral": 0.525,
+          "joy": 0.462,
+          "sadness": 0.002,
+          "anger": 0.0,
+          "fear": 0.0,
+          "surprise": 0.0,
+          "disgust": 0.0
+        },
+        "top_emotions": [
+          [
+            "neutral",
+            0.525
+          ],
+          [
+            "joy",
+            0.462
+          ]
+        ],
+        "evidence": {
+          "text": "sits there accuing dove."
+        }
+      }
+    ],
+    "windows": [
+      {
+        "start_timestamp": "00:00",
+        "end_timestamp": "00:10",
+        "dominant_emotions": [
+          [
+            "joy",
+            0.613
+          ],
+          [
+            "neutral",
+            0.318
+          ]
+        ],
+        "notes": ""
+      }
+    ]
+  },
+  "metadata": {
+    "files_provided": [
+      "audio"
+    ],
+    "modalities_used": [
+      "audio",
+      "text"
+    ],
+    "notes": [
+      "Analyzed with pretrained emotion models (no trained Telesense model in use).",
+      "No model checkpoint configured."
+    ]
+  },
+  "engine": {
+    "name": "pretrained",
+    "checkpoint": null,
+    "note": "No model checkpoint configured."
+  },
+  "created_at": "2026-10-25T23:39:11.402160",
+  "processing_time": 8.003044,
+  "sample_provenance": {
+    "source": "test_data/external/librispeech/1272-135031-0000.flac",
+    "offset_seconds": 0,
+    "excerpt_seconds": 10.885,
+    "kind": "precomputed_model_output",
+    "visual_emotion_model": "unavailable",
+    "attribution": {
+      "dataset": "LibriSpeech",
+      "authors": "Panayotov, Chen, Povey & Khudanpur (2015); original LibriVox readers",
+      "url": "https://www.openslr.org/12",
+      "clip_id": "1272-135031-0000",
+      "source_url": "https://huggingface.co/datasets/hf-internal-testing/librispeech_asr_dummy/resolve/main/clean/validation-00000-of-00001.parquet",
+      "mirror": "https://huggingface.co/datasets/hf-internal-testing/librispeech_asr_dummy",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "license_files": [
+        "/demo/licenses/CC-BY-4.0.txt"
+      ],
+      "reference_transcript": "BECAUSE YOU WERE SLEEPING INSTEAD OF CONQUERING THE LOVELY ROSE PRINCESS HAS BECOME A FIDDLE WITHOUT A BOW WHILE POOR SHAGGY SITS THERE A COOING DOVE",
+      "source_label": "Read speech \u00b7 no clinical label",
+      "changes": "Full utterance extracted from the mirrored corpus; transcoded to MP3 for playback and mono 16 kHz WAV for analysis. Reference text is retained separately from model output.",
+      "sha256": "26cbebbdd8954104c936dc38fbb8a80958f2169ada0fa6fe46a89cfa9e3d824c"
+    }
+  }
+}

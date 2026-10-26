@@ -117,7 +117,7 @@ Configuration references: [Fly app configuration](https://docs.fly.io/reference/
 
 Production URL: **https://telesense.vercel.app**. The Vercel project is `telesense` under `raj-reddys-projects`, linked locally through ignored `.vercel/` metadata. For CLI deploys use `npx --yes vercel@latest deploy --prod --yes`; the older global CLI may be rejected by Vercel.
 
-The frontend includes three approved excerpts (one ~9-second video, one 45-second audio clip, and one 30-second audio clip) from `test_data` under `app/frontend/public/demo/`, with saved outputs from the real pretrained pipeline. Visitors can play recordings, search and seek transcripts, inspect modality timelines, and export JSON without a backend or key. Results are explicitly labeled as saved model analysis. Video emotion inference is unavailable; video provides playback context.
+The frontend includes eight samples under `app/frontend/public/demo/`: three approved local excerpts, three CREMA-D acted videos, and two LibriSpeech audio utterances, with saved outputs from the real pretrained pipeline. Visitors can play recordings, search and seek transcripts, inspect modality timelines, and export JSON without a backend or key. Results are explicitly labeled as saved model analysis. Video emotion inference is unavailable; video provides playback context.
 
 Regenerate the sample assets from the local source collection with:
 
@@ -142,3 +142,5 @@ The live backend is deployed at **https://telesense-demo-api.fly.dev**. Vercel P
 Hosted verification passed: `/health`, missing-key 401, Vercel-origin CORS preflight, real video upload and CPU inference, results retrieval, protected extracted audio, and a browser upload from the public Vercel frontend through transcript/waveform/signal rendering.
 
 The black UI includes a model-output diagram with animated curved connectors. The library previews saved output from its first sample; session review uses that session’s actual results. Connector motion illustrates the data path rather than real-time inference, and respects reduced-motion preferences.
+
+The sample library now contains eight recordings: the three original approved excerpts, three CREMA-D acted video clips, and two LibriSpeech audio utterances. `scripts/fetch_demo_sources.py` retrieves and checksum-verifies the five external source files in ignored `test_data/external/`. `scripts/build_demo_samples.py` transcodes new clips and generates actual pretrained CPU outputs, then publishes the complete manifest. Licenses and attribution are served with the assets; reference text and source labels are displayed separately from model predictions.

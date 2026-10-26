@@ -1,6 +1,6 @@
-# Candidate sample recordings
+# Sample recordings and candidate sources
 
-Reviewed October 25, 2026. These sources are researched candidates, not media already added to the public library. Existing published recordings remain the approved local test_data excerpts.
+Reviewed October 25, 2026. The public library contains eight recordings: three approved local excerpts, three CREMA-D videos, and two LibriSpeech audio clips. RAVDESS and DAIC-WOZ remain candidates, not hosted recordings.
 
 | Source | Useful addition | Published terms | Next step |
 | --- | --- | --- | --- |
@@ -18,3 +18,12 @@ Reviewed October 25, 2026. These sources are researched candidates, not media al
 For each addition record: author/corpus, source URL, original clip ID, license URL/version, reference label or transcript, and modifications (cuts, resampling, transcoding). Store corpus labels separately from model outputs. Run the actual pretrained pipeline and label its output as saved analysis. Do not infer or attach a diagnosis to a speaker from these samples.
 
 The in-app **Models & context → Sample data sources** view exposes this shortlist and links to the primary publishers.
+
+## Published external set
+
+- CREMA-D: `1001_ITH_NEU_XX`, `1001_ITH_HAP_XX`, `1001_ITH_SAD_XX` — the same sentence, performed with neutral, happy, and sad expressions. Full clips are converted to browser-compatible MP4.
+- LibriSpeech: `1272-128104-0000` and `1272-135031-0000` — full dev-clean utterances from the Hugging Face internal-testing mirror, with corpus reference text retained.
+
+The UI includes attribution, source-label explanations, reference transcripts, modification details, and license downloads. The CREMA-D subset/catalog is separately distributed under ODbL 1.0; individual contents retain DbCL 1.0. LibriSpeech retains CC BY 4.0. See `app/frontend/public/demo/ATTRIBUTION.md` and the `licenses/` directory. This does not relicense unrelated recordings or the application source.
+
+Run `python scripts/fetch_demo_sources.py` to fetch and checksum-verify source files, and `python scripts/build_demo_samples.py` in the configured CPU environment to generate results. Do not substitute corpus labels or reference transcripts for actual model predictions.

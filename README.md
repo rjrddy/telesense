@@ -292,12 +292,14 @@ See [DEPLOYMENT.md](DEPLOYMENT.md) for the Vercel frontend and single-instance F
 
 **Live demo: [telesense.vercel.app](https://telesense.vercel.app)**
 
-The portfolio frontend includes three short excerpts from the approved `test_data` collection with real saved pretrained-model results. Explore synchronized playback, waveforms, transcript search, per-modality timelines, signal inspection, and JSON export without a key. The interface labels saved results and model limitations explicitly.
+The portfolio frontend includes eight samples: three approved local excerpts, three CREMA-D acted videos, and two LibriSpeech readings, each with real saved pretrained-model results. Explore synchronized playback, waveforms, transcript search, per-modality timelines, signal inspection, and JSON export without a key. The interface labels saved results and model limitations explicitly.
 
 Run `npm run dev --prefix app/frontend -- --port 5173` for local preview. Run `HF_HOME=app/storage/hf-cache python scripts/build_demo_samples.py --force` in the root Python environment to regenerate approved sample assets and results. This requires local source recordings, model downloads, and CPU inference. Keep `VITE_API_URL` unset for a Vercel sample-only deployment; configure it with the Fly backend URL to enable gated uploads.
 
 Live uploads use the Fly backend at `https://telesense-demo-api.fly.dev`. Enter the shared key from the ignored root `.env.local` on the upload screen; the published sample library remains open without a key.
 
-The **Models & context** guide documents the deployed Whisper/Wav2Vec2/RoBERTa pipeline, inactive research tracks, how heuristic concern labels differ from diagnosis, and links to primary model cards and NIMH clinical information. See [SAMPLE_DATA.md](SAMPLE_DATA.md) for the researched recording-source shortlist and reuse constraints; no additional third-party recordings have been published from that shortlist yet.
+The **Models & context** guide documents the deployed Whisper/Wav2Vec2/RoBERTa pipeline, inactive research tracks, how heuristic concern labels differ from diagnosis, and links to primary model cards and NIMH clinical information. See [SAMPLE_DATA.md](SAMPLE_DATA.md) for the researched recording-source shortlist and reuse constraints; five attributed recordings from LibriSpeech and CREMA-D are now published, bringing the library to eight samples.
 
 The dark review workspace visualizes actual transcript excerpts, first per-modality flag scores, and combined flag counts in curved model-output panels. Animated connectors show the transcription/language path and parallel vocal-analysis path; reduced-motion preferences disable animation.
+
+To fetch only the five external source clips, run `python scripts/fetch_demo_sources.py`, then `HF_HOME=app/storage/hf-cache python scripts/build_demo_samples.py`. Reference transcripts and corpus labels remain separate from predictions. Published sample credits and license notices are in `app/frontend/public/demo/ATTRIBUTION.md`.

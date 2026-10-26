@@ -3981,3 +3981,134 @@ h1,
     padding-right: 20px;
   }
 }
+.recording-options {
+  max-height: 490px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #3d6542 transparent;
+}
+.sample-attribution {
+  margin-top: 22px;
+  padding: 15px 17px;
+  background: #111d16;
+  border: 1px solid #2d4a32;
+  border-radius: 10px;
+  font-size: 10px;
+  color: #719c78;
+}
+.session-notice + .sample-attribution {
+  margin: -7px 0 22px;
+}
+.attribution-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 9px;
+  line-height: 1.8;
+}
+.attribution-heading > span:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.sample-attribution a {
+  color: #a2cfab;
+  text-decoration: none;
+}
+.sample-attribution a:hover {
+  text-decoration: underline;
+}
+.source-license {
+  color: #567f5e;
+  font-size: 8px;
+}
+.sample-attribution summary {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  cursor: pointer;
+  color: #88b28e;
+  font-size: 9px;
+  margin-top: 12px;
+  list-style: none;
+}
+.sample-attribution summary::-webkit-details-marker {
+  display: none;
+}
+.sample-attribution details[open] summary > svg {
+  transform: rotate(90deg);
+}
+.source-details {
+  margin-top: 17px;
+  padding-top: 16px;
+  border-top: 1px solid #29482e;
+}
+.source-details h4 {
+  font-size: 9px;
+  color: #9bc6a0;
+  font-weight: 500;
+}
+.source-details blockquote {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border-left: 2px solid #567f5a;
+  background: #0e1a12;
+  font-size: 11px;
+  line-height: 1.9;
+  color: #accfb0;
+}
+.source-details > p {
+  font-size: 9px;
+  color: #5f8b67;
+  line-height: 1.8;
+}
+.source-details dl {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 10px 13px;
+  font-size: 9px;
+  line-height: 1.8;
+  margin: 17px 0;
+}
+.source-details dt {
+  color: #5d8864;
+}
+.source-details dd {
+  margin: 0;
+  color: #88b48e;
+  overflow-wrap: anywhere;
+}
+.attribution-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 9px;
+}
+@media (max-width: 700px) {
+  .recording-options {
+    max-height: none;
+    overflow-y: hidden;
+  }
+  .sample-attribution {
+    padding: 13px;
+    margin-top: 18px;
+  }
+  .attribution-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .source-details dl {
+    grid-template-columns: 1fr;
+    gap: 5px;
+  }
+  .source-details dd {
+    margin-bottom: 8px;
+  }
+  .source-details blockquote {
+    font-size: 10px;
+  }
+}

@@ -253,10 +253,10 @@ export default function ResearchGuide({ section, onSection }) {
           <div className="guide-intro">
             <h2>Sources for a broader sample library</h2>
             <p>
-              Four researched candidates, with different purposes and reuse
-              constraints. These are source recommendations, not recordings
-              already added to the library. The current library contains only
-              the approved local excerpts.
+              The library now includes three CREMA-D performances and two
+              LibriSpeech utterances alongside the approved local excerpts.
+              RAVDESS and DAIC-WOZ remain research candidates with different
+              reuse constraints.
             </p>
           </div>
           <div className="dataset-grid">
@@ -267,7 +267,7 @@ export default function ResearchGuide({ section, onSection }) {
                 <span className="dataset-type">{d.type}</span>
                 <p>{d.description}</p>
                 <dl>
-                  <dt>Why add it</dt>
+                  <dt>Purpose</dt>
                   <dd>{d.recommendation}</dd>
                   <dt>Published terms</dt>
                   <dd>{d.license}</dd>
@@ -278,13 +278,12 @@ export default function ResearchGuide({ section, onSection }) {
             ))}
           </div>
           <div className="guide-note">
-            <h3>Recommended addition order</h3>
+            <h3>What is included now</h3>
             <p>
-              Start with short LibriSpeech clips and their reference transcripts
-              for speech recognition. Then add a small, properly attributed
-              CREMA-D comparison set to show the same words spoken with
-              different emotions. Keep source labels separate from model
-              predictions: neither is a clinical diagnosis.
+              Two LibriSpeech utterances include reference transcripts. Three
+              CREMA-D videos contrast neutral, happy, and sad performances of
+              the same sentence. Source labels and reference text are shown
+              separately from predictions; neither is a clinical diagnosis.
             </p>
             <p>
               For every published clip, record its source URL, clip identifier,

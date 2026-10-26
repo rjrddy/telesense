@@ -65,8 +65,8 @@ export const datasets = [
   {
     name: "LibriSpeech",
     type: "Read speech · audio + transcripts",
-    recommendation: "Best next transcription sample",
-    status: "Attribution required",
+    recommendation: "Reference transcript comparison",
+    status: "2 recordings in the library",
     license: "CC BY 4.0",
     description:
       "Public-domain audiobook readings packaged as an ASR corpus. Useful for comparing recognized words with reference transcripts and testing clean versus challenging audio.",
@@ -78,13 +78,13 @@ export const datasets = [
   {
     name: "CREMA-D",
     type: "Acted emotion · audio + video",
-    recommendation: "Best next emotion comparison",
-    status: "License obligations to implement",
+    recommendation: "Matched sentence / emotion comparison",
+    status: "3 recordings in the library",
     license: "ODbL 1.0 + DbCL 1.0 for contents",
     description:
       "7,442 clips from 91 actors using six emotional expressions. Matched sentences would let visitors compare vocal delivery while keeping the words similar.",
     caveat:
-      "Preserve source attribution and license notices, and review database/share-alike obligations for the selected release. The repository also requests a user registration form. Acted labels are not diagnoses.",
+      "This demo includes source attribution, license notices, and a downloadable ODbL subset catalog. The publisher requests a user-registration form. Acted labels are not diagnoses.",
     url: "https://github.com/CheyneyComputerScience/CREMA-D",
     tone: "teal",
   },

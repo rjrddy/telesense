@@ -1,0 +1,100 @@
+{
+  "title": "Telesense CREMA-D three-clip subset",
+  "license": "ODbL 1.0",
+  "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+  "contents_license": "DbCL 1.0",
+  "notice": "Contains information from CREMA-D, made available under the Open Database License (ODbL).",
+  "source": "https://github.com/CheyneyComputerScience/CREMA-D",
+  "records": [
+    {
+      "id": "crema-neutral",
+      "title": "Acted neutral \u00b7 CREMA-D",
+      "subtitle": "Matched sentence \u00b7 acted expression",
+      "description": "Actor 1001 performs the same sentence with a neutral expression. The corpus label is not a diagnosis.",
+      "type": "video",
+      "duration": 2.6026000000000002,
+      "media": "/demo/crema-neutral.mp4",
+      "audio": "/demo/crema-neutral.wav",
+      "poster": "/demo/crema-neutral.jpg",
+      "results": "/demo/crema-neutral.json",
+      "attribution": {
+        "dataset": "CREMA-D",
+        "authors": "Cao, Cooper, Keutmann, Gur, Nenkova & Verma (2014)",
+        "url": "https://github.com/CheyneyComputerScience/CREMA-D",
+        "clip_id": "1001_ITH_NEU_XX",
+        "source_url": "https://media.githubusercontent.com/media/CheyneyComputerScience/CREMA-D/master/VideoFlash/1001_ITH_NEU_XX.flv",
+        "license": "ODbL 1.0 (database); DbCL 1.0 (contents)",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "contents_license_url": "https://opendatacommons.org/licenses/dbcl/1-0/",
+        "license_files": [
+          "/demo/licenses/ODbL-1.0.txt",
+          "/demo/licenses/DbCL-1.0.txt"
+        ],
+        "reference_transcript": "I think I have a doctor's appointment.",
+        "source_label": "Acted neutral \u00b7 unspecified intensity",
+        "changes": "Full clip transcoded from FLV to MP4; audio downmixed and resampled to mono 16 kHz for analysis; thumbnail extracted.",
+        "sha256": "dfd6bc538a12d91c215e2a6430c79ef69e2c847790d7b8ae8509b6c61dbc3332"
+      }
+    },
+    {
+      "id": "crema-happy",
+      "title": "Acted happy \u00b7 CREMA-D",
+      "subtitle": "Matched sentence \u00b7 acted expression",
+      "description": "Actor 1001 performs the same sentence with a happy expression. The corpus label is not a diagnosis.",
+      "type": "video",
+      "duration": 2.469133333333333,
+      "media": "/demo/crema-happy.mp4",
+      "audio": "/demo/crema-happy.wav",
+      "poster": "/demo/crema-happy.jpg",
+      "results": "/demo/crema-happy.json",
+      "attribution": {
+        "dataset": "CREMA-D",
+        "authors": "Cao, Cooper, Keutmann, Gur, Nenkova & Verma (2014)",
+        "url": "https://github.com/CheyneyComputerScience/CREMA-D",
+        "clip_id": "1001_ITH_HAP_XX",
+        "source_url": "https://media.githubusercontent.com/media/CheyneyComputerScience/CREMA-D/master/VideoFlash/1001_ITH_HAP_XX.flv",
+        "license": "ODbL 1.0 (database); DbCL 1.0 (contents)",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "contents_license_url": "https://opendatacommons.org/licenses/dbcl/1-0/",
+        "license_files": [
+          "/demo/licenses/ODbL-1.0.txt",
+          "/demo/licenses/DbCL-1.0.txt"
+        ],
+        "reference_transcript": "I think I have a doctor's appointment.",
+        "source_label": "Acted happy \u00b7 unspecified intensity",
+        "changes": "Full clip transcoded from FLV to MP4; audio downmixed and resampled to mono 16 kHz for analysis; thumbnail extracted.",
+        "sha256": "47717f886c124c62752ef55a8bbf6c94446999c50460b738da554d33fffcea57"
+      }
+    },
+    {
+      "id": "crema-sad",
+      "title": "Acted sad \u00b7 CREMA-D",
+      "subtitle": "Matched sentence \u00b7 acted expression",
+      "description": "Actor 1001 performs the same sentence with a sad expression. The corpus label is not a diagnosis.",
+      "type": "video",
+      "duration": 2.3690333333333333,
+      "media": "/demo/crema-sad.mp4",
+      "audio": "/demo/crema-sad.wav",
+      "poster": "/demo/crema-sad.jpg",
+      "results": "/demo/crema-sad.json",
+      "attribution": {
+        "dataset": "CREMA-D",
+        "authors": "Cao, Cooper, Keutmann, Gur, Nenkova & Verma (2014)",
+        "url": "https://github.com/CheyneyComputerScience/CREMA-D",
+        "clip_id": "1001_ITH_SAD_XX",
+        "source_url": "https://media.githubusercontent.com/media/CheyneyComputerScience/CREMA-D/master/VideoFlash/1001_ITH_SAD_XX.flv",
+        "license": "ODbL 1.0 (database); DbCL 1.0 (contents)",
+        "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+        "contents_license_url": "https://opendatacommons.org/licenses/dbcl/1-0/",
+        "license_files": [
+          "/demo/licenses/ODbL-1.0.txt",
+          "/demo/licenses/DbCL-1.0.txt"
+        ],
+        "reference_transcript": "I think I have a doctor's appointment.",
+        "source_label": "Acted sad \u00b7 unspecified intensity",
+        "changes": "Full clip transcoded from FLV to MP4; audio downmixed and resampled to mono 16 kHz for analysis; thumbnail extracted.",
+        "sha256": "749f7e1b210b2f48a7162ad758960787bcdbca8800a05a26e78f5b9ae7532f9c"
+      }
+    }
+  ]
+}
