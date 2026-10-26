@@ -88,10 +88,12 @@ export default function ResearchGuide({ section, onSection }) {
               same moment.
             </p>
             <p>
-              Video is available as playback context. A facial-emotion model is
-              not enabled in the deployed demo. The repository also contains
-              trainable multimodal and temporal models, but no trained
-              checkpoint is used here.
+              Video in batch review is available as playback context; batch
+              visual-expression inference remains disabled. The separate Camera
+              context workspace estimates visible facial expressions locally in
+              the browser. It does not infer internal emotions or clinical
+              conditions. The repository also contains trainable multimodal and
+              temporal models, but no trained checkpoint is used here.
             </p>
           </section>
           <section className="research-tracks">

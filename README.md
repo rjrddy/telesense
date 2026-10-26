@@ -303,3 +303,16 @@ The **Models & context** guide documents the deployed Whisper/Wav2Vec2/RoBERTa p
 The dark review workspace visualizes actual transcript excerpts, first per-modality flag scores, and combined flag counts in curved model-output panels. Animated connectors show the transcription/language path and parallel vocal-analysis path; reduced-motion preferences disable animation.
 
 To fetch only the five external source clips, run `python scripts/fetch_demo_sources.py`, then `HF_HOME=app/storage/hf-cache python scripts/build_demo_samples.py`. Reference transcripts and corpus labels remain separate from predictions. Published sample credits and license notices are in `app/frontend/public/demo/ATTRIBUTION.md`.
+
+## Camera context workspace
+
+The top navigation includes **Camera context**, a single-device camera preview and facial-expression demonstration. Press **Start camera** to load the browser model and request video permission. It uses the browser media-capture API without rooms, client/owner roles, signaling, or an SFU. There is no remote call participant.
+
+- Frames are processed locally by the pinned `@vladmandic/face-api` Tiny Face Detector and face-expression network. Only these two model weights are hosted under `app/frontend/public/models/face-expression/`; identity, age, and gender networks are not loaded.
+- The microphone is never requested. Camera frames are not uploaded or recorded. Model runtime/assets are downloaded from the demo site.
+- Results describe visible facial-expression classes, not actual emotions, stress, intent, mental health, or diagnoses. Expression scores are uncalibrated.
+- Evaluation is withheld when more than one face is detected. No face clears the displayed estimate.
+- Stop, navigation away, hidden tabs, and component unmount release media tracks and stop inference. Pending permission responses are discarded if the user cancels.
+- The latest 300 observations remain only in component memory. An explicit export downloads expression scores and timestamps, never frames or video. A new camera session resets the history; navigating away clears it.
+
+Camera access requires HTTPS (the Vercel deployment) or localhost. Permission-denied, missing-camera, busy-camera, and model-loading errors are surfaced in the UI. No Fly endpoint, shared key, or WebRTC signaling service is needed for this workspace.

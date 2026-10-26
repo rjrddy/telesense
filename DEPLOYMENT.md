@@ -144,3 +144,9 @@ Hosted verification passed: `/health`, missing-key 401, Vercel-origin CORS prefl
 The black UI includes a model-output diagram with animated curved connectors. The library previews saved output from its first sample; session review uses that session’s actual results. Connector motion illustrates the data path rather than real-time inference, and respects reduced-motion preferences.
 
 The sample library now contains eight recordings: the three original approved excerpts, three CREMA-D acted video clips, and two LibriSpeech audio utterances. `scripts/fetch_demo_sources.py` retrieves and checksum-verifies the five external source files in ignored `test_data/external/`. `scripts/build_demo_samples.py` transcodes new clips and generates actual pretrained CPU outputs, then publishes the complete manifest. Licenses and attribution are served with the assets; reference text and source labels are displayed separately from model predictions.
+
+## Local camera expression demo
+
+**Camera context** is served entirely by Vercel. It lazy-loads the browser runtime and self-hosted MIT model assets only after Start camera. It uses HTTPS `getUserMedia` video capture with no microphone, uploads, recording, SFU, or remote roles. Facial-expression estimates must not be interpreted as internal emotional state, stress, intent, mental health, or diagnosis. The batch-analysis Fly backend is unchanged.
+
+Model source/version, enabled and disabled networks, checksums, and the MIT notice are retained in `app/frontend/public/models/face-expression/SOURCE.json` and `LICENSE.txt`. Keep these assets in Vercel deployment inputs. The pretrained batch pipeline and its visual-model limitations remain separate from this browser feature.

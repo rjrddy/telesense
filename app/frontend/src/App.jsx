@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import Icon from "./components/Icon";
+import CameraWorkspace from "./components/CameraWorkspace";
 import SampleAttribution from "./components/SampleAttribution";
 import ResearchGuide from "./components/ResearchGuide";
 import ModelFlow from "./components/ModelFlow";
@@ -262,6 +263,16 @@ export default function App() {
             Sample library
             <span className="nav-count">{samples.length || "—"}</span>
           </button>
+          <button
+            className={page === "camera" ? "nav-item active" : "nav-item"}
+            onClick={() => {
+              setError("");
+              setPage("camera");
+            }}
+          >
+            <Icon name="video" />
+            Camera context
+          </button>
           {session && (
             <button
               className={isReview ? "nav-item active" : "nav-item"}
@@ -304,6 +315,7 @@ export default function App() {
                 ? "Session review"
                 : {
                     library: "Sample library",
+                    camera: "Camera context",
                     upload: "Upload a recording",
                     about: "Models & context",
                   }[page]}
@@ -324,6 +336,7 @@ export default function App() {
               </button>
             </div>
           )}
+          {page === "camera" && <CameraWorkspace />}
           {page === "library" && (
             <section className="session-library">
               <div className="page-heading">
