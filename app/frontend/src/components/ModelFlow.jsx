@@ -1,13 +1,20 @@
 import { useEffect, useId, useState } from "react";
 import Icon from "./Icon";
 
-export default function ModelFlow({ samples = [], results, title, onModels }) {
+export default function ModelFlow({
+  samples = [],
+  sample,
+  results,
+  title,
+  onModels,
+}) {
   const [preview, setPreview] = useState(null);
+  const currentSample = sample || samples[0];
   const marker = useId().replaceAll(":", "");
   useEffect(() => {
-    if (results || !samples[0]) return;
+    if (results || !currentSample) return;
     const controller = new AbortController();
-    fetch(samples[0].results, { signal: controller.signal })
+    fetch(currentSample.results, { signal: controller.signal })
       .then((r) => {
         if (!r.ok) throw Error();
         return r.json();
@@ -15,7 +22,7 @@ export default function ModelFlow({ samples = [], results, title, onModels }) {
       .then(setPreview)
       .catch(() => {});
     return () => controller.abort();
-  }, [results, samples]);
+  }, [results, currentSample]);
   const data = results || preview;
   const transcript = data?.transcript?.[0]?.text;
   const audioFlag = data?.audio_flags?.[0];
@@ -33,8 +40,8 @@ export default function ModelFlow({ samples = [], results, title, onModels }) {
         <span className="flow-source">
           {results
             ? title
-            : samples[0]
-              ? `Saved sample · ${samples[0].title}`
+            : currentSample
+              ? `Saved sample · ${currentSample.title}`
               : "Loading sample output…"}
         </span>
       </header>

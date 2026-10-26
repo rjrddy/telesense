@@ -37,6 +37,7 @@ export default function App() {
     setPage("about");
   };
   const [samples, setSamples] = useState([]);
+  const [selectedSampleId, setSelectedSampleId] = useState(null);
   const [session, setSession] = useState(null);
   const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -231,10 +232,12 @@ export default function App() {
         : null
     : session?.audio;
   const isReview = page === "review" && session;
+  const selectedSample =
+    samples.find((sample) => sample.id === selectedSampleId) || samples[0];
 
   return (
     <div className="app-shell">
-      <aside className="sidebar">
+      <header className="workspace-header">
         <a
           href="#"
           className="brand"
@@ -248,7 +251,7 @@ export default function App() {
           </span>
           Telesense
         </a>
-        <div className="workspace-label">WORKSPACE</div>
+
         <nav aria-label="Main navigation">
           <button
             className={page === "library" ? "nav-item active" : "nav-item"}
@@ -285,15 +288,11 @@ export default function App() {
             Models & context
           </button>
         </nav>
-        <div className="sidebar-footer">
-          <strong>Research prototype</strong>
-          <p>
-            For demonstration only.
-            <br />
-            Not for clinical use.
-          </p>
-        </div>
-      </aside>
+        <span className="workspace-status">
+          <span />
+          Research workspace
+        </span>
+      </header>
 
       <div className="main-shell">
         <header className="topbar">
@@ -345,92 +344,90 @@ export default function App() {
                   Upload recording
                 </button>
               </div>
-              <ModelFlow
-                samples={samples}
-                onModels={() => openGuide("models")}
-              />
-              <div className="library-toolbar">
-                <span>{samples.length} recordings</span>
-                <span>Saved results · no access key required</span>
-              </div>
-              <div className="session-table-wrap">
-                <table className="session-table">
-                  <caption className="sr-only">
-                    Sample recordings available for review
-                  </caption>
-                  <thead>
-                    <tr>
-                      <th scope="col">Recording</th>
-                      <th scope="col">Format</th>
-                      <th scope="col">Duration</th>
-                      <th scope="col">Analysis</th>
-                      <th scope="col">
-                        <span className="sr-only">Actions</span>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
+              <div className="library-workbench">
+                <section
+                  className="recording-rail"
+                  aria-label="Choose a sample"
+                >
+                  <div className="rail-heading">
+                    <span>Recordings</span>
+                    <span>{samples.length}</span>
+                  </div>
+                  <div className="recording-options">
                     {samples.map((sample, i) => (
-                      <tr key={sample.id}>
-                        <td>
-                          <div className="recording-cell">
-                            <div className="recording-thumbnail">
-                              {sample.poster ? (
-                                <img src={sample.poster} alt="" />
-                              ) : (
-                                <Icon name="wave" size={23} />
-                              )}
-                            </div>
-                            <div>
-                              <button
-                                className="recording-title"
-                                onClick={() => openSample(sample)}
-                              >
-                                {sample.title}
-                              </button>
-                              <span className="recording-source">
-                                {sample.media.split("/").pop()}
-                              </span>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <span className="format-label">
-                            <Icon
-                              name={sample.type === "video" ? "video" : "wave"}
-                              size={15}
-                            />
+                      <button
+                        key={sample.id}
+                        className={`recording-option ${selectedSample?.id === sample.id ? "selected" : ""}`}
+                        aria-pressed={selectedSample?.id === sample.id}
+                        onClick={() => setSelectedSampleId(sample.id)}
+                      >
+                        <div className="option-preview">
+                          {sample.poster ? (
+                            <img src={sample.poster} alt="" />
+                          ) : (
+                            <Icon name="wave" size={26} />
+                          )}
+                          <span>{time(sample.duration)}</span>
+                        </div>
+                        <div className="option-content">
+                          <span className="option-index">
+                            0{i + 1} /{" "}
                             {sample.type === "video"
-                              ? "Video + audio"
-                              : "Audio"}
+                              ? "VIDEO + AUDIO"
+                              : "AUDIO"}
                           </span>
-                        </td>
-                        <td className="duration-cell">
-                          {time(sample.duration)}
-                        </td>
-                        <td>
-                          <span className="analysis-ready">
-                            <Icon name="check" size={14} />
-                            Available
-                          </span>
-                        </td>
-                        <td className="table-action">
-                          <button
-                            className="button secondary"
-                            onClick={() => openSample(sample)}
-                            aria-label={`Review ${sample.title}`}
-                          >
-                            Review
-                            <Icon name="arrow" size={14} />
-                          </button>
-                        </td>
-                      </tr>
+                          <strong>{sample.title}</strong>
+                          <p>{sample.media.split("/").pop()}</p>
+                        </div>
+                        <Icon name="chevron" size={16} />
+                      </button>
                     ))}
-                  </tbody>
-                </table>
-                {!samples.length && (
-                  <div className="loading-panel">Loading recordings…</div>
-                )}
+                  </div>
+                  {!samples.length && (
+                    <div className="loading-panel">Loading recordings…</div>
+                  )}
+                  <div className="rail-note">
+                    <Icon name="check" size={14} />
+                    <span>
+                      Saved analysis
+                      <br />
+                      No key required
+                    </span>
+                  </div>
+                </section>
+                <section
+                  className="output-inspector"
+                  aria-label="Selected sample outputs"
+                >
+                  <div className="inspector-heading">
+                    <div>
+                      <span className="section-kicker">OUTPUT INSPECTOR</span>
+                      <h2>{selectedSample?.title || "Select a recording"}</h2>
+                    </div>
+                    <button
+                      className="button primary"
+                      disabled={!selectedSample}
+                      onClick={() => openSample(selectedSample)}
+                    >
+                      Open session
+                      <Icon name="arrow" size={16} />
+                    </button>
+                  </div>
+                  {selectedSample && (
+                    <ModelFlow
+                      key={selectedSample.id}
+                      sample={selectedSample}
+                      onModels={() => openGuide("models")}
+                    />
+                  )}
+                  <div className="inspector-bottom">
+                    <span>
+                      <Icon name="clock" size={14} />
+                      {time(selectedSample?.duration)} recording
+                    </span>
+                    <span>Pretrained pipeline · saved outputs</span>
+                  </div>
+                </section>
               </div>
               <div className="library-details">
                 <section className="library-context">
@@ -531,6 +528,23 @@ export default function App() {
                     />
                   </div>
                 </div>
+              )}
+              {results && (
+                <details className="review-pipeline">
+                  <summary>
+                    <Icon name="wave" size={16} />
+                    <span>Model output diagram</span>
+                    <span className="pipeline-summary-count">
+                      {signals.length} combined signals
+                    </span>
+                    <Icon name="chevron" size={14} />
+                  </summary>
+                  <ModelFlow
+                    results={results}
+                    title={session.title}
+                    onModels={() => openGuide("models")}
+                  />
+                </details>
               )}
               <div className="review-grid">
                 <div className="review-main">
@@ -808,13 +822,6 @@ export default function App() {
                   </section>
                 </div>
               </div>
-              {results && (
-                <ModelFlow
-                  results={results}
-                  title={session.title}
-                  onModels={() => openGuide("models")}
-                />
-              )}
               <p className="review-disclaimer">
                 <Icon name="shield" size={14} />
                 Exploratory outputs, not clinical findings. Signals may be
