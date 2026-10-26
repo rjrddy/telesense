@@ -5,7 +5,8 @@ import VisualFlagMonitor from './components/VisualFlagMonitor'
 import AudioFlagMonitor from './components/AudioFlagMonitor'
 import TextFlagMonitor from './components/TextFlagMonitor'
 import SummaryDashboard from './components/SummaryDashboard'
-import { uploadVideo, startAnalysis, getStatus, getResults, createWebSocket } from './services/api'
+import { uploadVideo, startAnalysis, getStatus, getResults, createWebSocket, authUrl } from './services/api'
+import KeyGate from './components/KeyGate'
 import './styles/App.css'
 
 function App() {
@@ -128,6 +129,7 @@ function App() {
 
   return (
     <div className="app">
+      <KeyGate />
       <header className="app-header">
         <h1>Telesense - Post-intake Multi-Modal Fusion Analysis</h1>
         <div className="header-actions">
@@ -169,8 +171,8 @@ function App() {
 
             <div className="video-section">
               <VideoPlayer
-                videoUrl={fileType === 'audio' && analysisResults?.audio_url 
-                  ? `http://localhost:8000${analysisResults.audio_url}` 
+                videoUrl={fileType === 'audio' && analysisResults?.audio_url
+                  ? authUrl(analysisResults.audio_url)
                   : videoUrl}
                 currentTime={currentTime}
                 onTimeUpdate={handleTimeUpdate}
@@ -194,7 +196,7 @@ function App() {
                 duration={analysisResults?.duration || 0}
                 currentTime={currentTime}
                 onSeek={handleSeek}
-                videoUrl={analysisResults?.audio_url ? `http://localhost:8000${analysisResults.audio_url}` : videoUrl}
+                videoUrl={analysisResults?.audio_url ? authUrl(analysisResults.audio_url) : videoUrl}
               />
 
               <TextFlagMonitor

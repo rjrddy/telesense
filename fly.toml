@@ -1,0 +1,39 @@
+app = "telesense-demo-api"
+primary_region = "ord"
+kill_signal = "SIGTERM"
+kill_timeout = 30
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  HOST = "0.0.0.0"
+  PORT = "8080"
+  TELESENSE_STORAGE_DIR = "/data/storage"
+  HF_HOME = "/data/hf-cache"
+  TELESENSE_MAX_UPLOAD_MB = "100"
+  # Replace with your production Vercel origin before deploying.
+  CORS_ORIGINS = "https://telesense-demo.vercel.app"
+
+[[mounts]]
+  source = "telesense_data"
+  destination = "/data"
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = "off"
+  auto_start_machines = true
+  min_machines_running = 1
+
+  [[http_service.checks]]
+    grace_period = "120s"
+    interval = "30s"
+    timeout = "10s"
+    method = "GET"
+    path = "/health"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 2
+  memory = "4gb"

@@ -281,3 +281,7 @@ No datasets, recordings, analysis output or other data files are committed, and 
 | `torchcodec` / FFmpeg library warnings at startup | Harmless; audio is loaded through librosa/ffmpeg instead |
 | Out of memory on MPS/CUDA | Lower `batch_size` or `max_frames` in the config, or set `device.type: cpu` |
 | First run is slow | Pretrained weights (several GB) download once and are cached |
+
+## Portfolio deployment
+
+See [DEPLOYMENT.md](DEPLOYMENT.md) for the Vercel frontend and single-instance Fly.io CPU backend setup, demo-key gate, persistent model cache, and smoke checks. Use synthetic or explicitly public demo recordings only.

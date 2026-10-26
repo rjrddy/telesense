@@ -1,0 +1,38 @@
+.key-gate {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 6px 10px;
+  background: #1a1f26;
+  border-bottom: 1px solid #2a2f36;
+  font-size: 12px;
+  color: #c9ced5;
+}
+
+.key-gate label {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #9aa4ad;
+}
+
+.key-gate input {
+  flex: 1;
+  max-width: 320px;
+  padding: 4px 8px;
+  background: #0f1216;
+  color: inherit;
+  border: 1px solid #2a2f36;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.key-gate button {
+  padding: 4px 10px;
+  background: #2d6cdf;
+  color: white;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}

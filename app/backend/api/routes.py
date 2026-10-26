@@ -221,7 +221,18 @@ async def get_audio_file(video_id: str):
     )
 
 
-async def process_video_analysis(job_id: str, video_id: str, video_path: str,
+# A single CPU analysis at a time avoids loading multiple model stacks into RAM.
+_analysis_lock = asyncio.Lock()
+
+
+async def process_video_analysis(job_id, video_id, video_path, checkpoint_path, config):
+    async with _analysis_lock:
+        await asyncio.to_thread(
+            _process_video_analysis, job_id, video_id, video_path, checkpoint_path, config
+        )
+
+
+def _process_video_analysis(job_id: str, video_id: str, video_path: str,
                                   checkpoint_path: Optional[str], config: Optional[Dict]):
     """
     Process video or audio analysis in background.
